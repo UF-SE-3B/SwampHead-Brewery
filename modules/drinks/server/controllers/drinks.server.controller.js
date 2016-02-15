@@ -45,8 +45,13 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var drink = req.drink;
 
-  drink.title = req.body.title;
-  drink.content = req.body.content;
+  drink.drinkName = req.body.drinkName;
+  drink.drinkStyle = req.body.drinkStyle;
+  drink.drinkABV = req.body.drinkABV;
+  drink.color = req.body.color;
+  drink.glass = req.body.glass;
+  drink.origin = req.body.origin;
+  drink.price = req.body.price;
 
   drink.save(function (err) {
     if (err) {
@@ -103,7 +108,7 @@ exports.drinkByID = function (req, res, next, id) {
     });
   }
 
-  Drink.findById(id).populate('drinkName').exec(function (err, drink) {
+  Drink.findById(id).exec(function (err, drink) {
     if (err) {
       return next(err);
     } else if (!drink) {

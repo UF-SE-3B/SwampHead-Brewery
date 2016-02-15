@@ -46,7 +46,7 @@
         },
         data: {
           roles: ['admin'],
-          pageTitle: 'Edit Drink {{ drinkResolve.title }}'
+          pageTitle: 'Edit Drink {{ drink.drinkName }}'
         }
       })
       .state('drinks.view', {
@@ -58,7 +58,7 @@
           drinkResolve: getDrink
         },
         data:{
-          pageTitle: 'Drink {{ drinkResolve.title }}'
+          pageTitle: 'Drink {{ drink.drinkName }}'
         }
       });
   }

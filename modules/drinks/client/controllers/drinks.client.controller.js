@@ -39,7 +39,7 @@
       }
 
       function successCallback(res) {
-        $state.go('drinks.view', {
+        $state.go('drinks.list', {
           drinkId: res._id
         });
       }

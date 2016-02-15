@@ -3,7 +3,7 @@
     <h1>Drinks</h1>
   </div>
   <div class="list-group">
-    <a ng-repeat="drink in vm.drinks" ui-sref="drinks.view({ drinkId: drink._id })" class="list-group-item">
+    <a ng-repeat="drink in vm.drinks" ui-sref="drinks.edit({ drinkId: drink._id })" class="list-group-item">
       <h4 class="list-group-item-heading" ng-bind="drink.drinkName"></h4>
       <p class="list-group-item-text" ng-bind="drink.drinkStyle"></p>
     </a>
