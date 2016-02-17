@@ -19,7 +19,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('menu', {
       url: '/menu',
-      templateUrl: 'modules/core/client/views/menu.client.view.html'
+      templateUrl: 'modules/core/client/views/menu.client.view.html',
+      controller: 'MenuController',
+      controllerAs: 'vm'
     })
     .state('not-found', {
       url: '/not-found',
