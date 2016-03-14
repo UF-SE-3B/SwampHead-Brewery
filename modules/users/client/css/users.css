@@ -34,3 +34,12 @@
   min-height: 150px;
   max-height: 150px;
 }
+.list-group-item {
+  background: linear-gradient(to bottom right, #1d4d13, #336600);
+}
+.list-Txt {
+  color: white;
+}
+.list-Head {
+  color: bisque;
+}
