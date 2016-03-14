@@ -12,21 +12,21 @@
       title: 'Drinks',
       state: 'drinks',
       type: 'dropdown',
-      roles: ['admin']
+      roles: ['admin', 'manager']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'drinks', {
       title: 'List Drinks',
       state: 'drinks.list',
-      roles: ['admin']
+      roles: ['admin', 'manager']
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'drinks', {
       title: 'Create Drink',
       state: 'drinks.create',
-      roles: ['admin']
+      roles: ['admin', 'manager']
     });
   }
 })();
