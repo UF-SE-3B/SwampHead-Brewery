@@ -59,3 +59,15 @@
      -moz-box-shadow: 0 10px 6px -6px #777;
 	      box-shadow: 0 10px 6px -6px #777;
 }
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
