@@ -37,6 +37,9 @@ var DrinkSchema = new Schema({
     trim: true,
     default: ''
   },
+  drinkImageURL: {
+    type: String
+  },
   origin: {
     type: String,
     trim: true,
