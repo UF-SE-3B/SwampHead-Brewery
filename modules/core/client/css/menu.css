@@ -84,6 +84,10 @@ table, th , td {
   color: #f3f3ed;
 }
 
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
 .table-borderless-top tbody tr td, .table-borderless-top tbody tr th, .table-borderless-top thead tr th {
     border-top: none;
     border-bottom: 1px solid white;
