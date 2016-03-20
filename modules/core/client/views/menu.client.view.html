@@ -14,7 +14,7 @@
           <th>Price</th>
           <th>Glass</th>
         </tr>
-        <tr ng-repeat="drink in vm.drinks">
+        <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 0">
           <td class="veneer-font">{{drink.drinkName}}</td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
           <td class="clarendon-font">{{drink.drinkABV}}</td>
@@ -32,7 +32,7 @@
           <th>Price</th>
           <th>Glass</th>
         </tr>
-        <tr ng-repeat="drink in vm.drinks">
+        <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 1">
           <td class="veneer-font">{{drink.drinkName}}</td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
           <td class="clarendon-font">{{drink.drinkABV}}</td>
