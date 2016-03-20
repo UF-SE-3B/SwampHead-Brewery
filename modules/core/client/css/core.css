@@ -57,11 +57,13 @@ a:hover .header-profile-image {
 .navbar-inverse .navbar-nav > .active > a:focus {
     color: white;
     background: inherit;
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.85);
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
     color: white;
     background: inherit;
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.85);
 }
 /**** End Link CSS ****/
