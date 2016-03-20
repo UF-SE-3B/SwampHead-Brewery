@@ -20,7 +20,6 @@
         controller: 'DrinksListController',
         controllerAs: 'vm',
         data: {
-          roles: ['admin', 'manager', 'bartender'],
           pageTitle: 'Drinks List'
         }
       })
@@ -33,7 +32,7 @@
           drinkResolve: newDrink
         },
         data: {
-          roles: ['admin', 'manager'],
+          roles: ['admin'],
           pageTitle : 'Drinks Create'
         }
       })
@@ -46,7 +45,7 @@
           drinkResolve: getDrink
         },
         data: {
-          roles: ['admin', 'manager'],
+          roles: ['admin'],
           pageTitle: 'Edit Drink {{ drink.drinkName }}'
         }
       })
@@ -59,7 +58,6 @@
           drinkResolve: getDrink
         },
         data:{
-          roles: ['admin', 'manager', 'bartender'],
           pageTitle: 'Drink {{ drink.drinkName }}'
         }
       });
