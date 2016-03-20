@@ -5,9 +5,11 @@
         <h1>Users</h1>
       </div>
       <form role="form" class="form-horizontal">
-          <div class="col-md-4 form-group has-feedback has-feedback-left " style="margin-top: 2em">
-            <i class="glyphicon glyphicon-search form-control-feedback" ></i>
-            <input class="form-control" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" />
+          <div class="col-md-4 form-group " style="margin-top: 2em">
+            <div class="left-inner-addon">
+                <i class="glyphicon glyphicon-search " ></i>
+                <input class="form-control" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" >
+            </div>
           </div>
       </form>
     </div>
