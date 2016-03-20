@@ -42,6 +42,7 @@
 }
 .listItem:hover {
   opacity: 1.0;
+  color: white;
 }
 .list-Txt {
   color: white;
