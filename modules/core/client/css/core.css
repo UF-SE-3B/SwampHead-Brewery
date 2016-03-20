@@ -35,3 +35,35 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+.navbar-custom{
+  background-image: url(../img/design/desktopHeader.jpg);
+  background-repeat: repeat;
+}
+
+/*** Links CSS ***/
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    text-shadow:     0   -1px 0 rgba(0, 0, 0, 1),
+                     0    1px 0 rgba(0, 0, 0, 1),
+                     1px  0   0 rgba(0, 0, 0, 1),
+                    -1px  0   0 rgba(0, 0, 0, 1);
+    color: #3c763d;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: white;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: white;
+    background: inherit;
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.85);
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: white;
+    background: inherit;
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.85);
+}
+/**** End Link CSS ****/
