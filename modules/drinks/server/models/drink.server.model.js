@@ -37,6 +37,9 @@ var DrinkSchema = new Schema({
     trim: true,
     default: ''
   },
+  drinkImageURL: {
+    type: String
+  },
   origin: {
     type: String,
     trim: true,
@@ -53,6 +56,10 @@ var DrinkSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  onMenu: {
+    type: Boolean,
+    default: false
   }
 });
 

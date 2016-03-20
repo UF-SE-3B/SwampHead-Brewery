@@ -28,16 +28,18 @@
         </div>
         <div class="form-group" show-errors>
           <label class="control-label" for="color">Color</label>
-          <input name="color" type="text" ng-model="vm.drink.color" id="color" class="form-control" placeholder="Drink Color" required>
-          <div ng-messages="vm.form.drinkForm.color.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Drink Color is required.</p>
+          <div class ="controls">
+            <select data-ng-model="vm.drink.color" id="colorSelecter" class="form-control" ng-options="drinkColor.colorOption for drinkColor in colorOptions">
+
+            </select>
           </div>
         </div>
         <div class="form-group" show-errors>
           <label class="control-label" for="glass">Glass</label>
-          <input name="glass" type="text" ng-model="vm.drink.glass" id="glass" class="form-control" placeholder="Drink Glass" required>
-          <div ng-messages="vm.form.drinkForm.glass.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Drink Glass is required.</p>
+          <div class ="controls">
+            <select data-ng-model="vm.drink.glass" id="glassSelecter" class="form-control" ng-options="drinkGlass.glassOption for drinkGlass in glassOptions">
+              
+            </select>
           </div>
         </div>
         <div class="form-group" show-errors>
