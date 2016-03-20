@@ -1,7 +1,9 @@
 @media (min-width: 992px) {
   .nav-users {
     position: fixed;
+    opacity: 0;
   }
+
 }
 .social-account-container {
   display: inline-block;
@@ -45,4 +47,7 @@
 }
 .list-Txt {
   color: white;
+}
+.opac {
+  opacity: 100;
 }
