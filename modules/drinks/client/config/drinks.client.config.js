@@ -12,14 +12,14 @@
       title: 'Drinks',
       state: 'drinks',
       type: 'dropdown',
-      roles: ['admin', 'manager']
+      roles: ['admin', 'manager', 'bartender']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'drinks', {
       title: 'List Drinks',
       state: 'drinks.list',
-      roles: ['admin', 'manager']
+      roles: ['admin', 'manager', 'bartender']
     });
 
     // Add the dropdown create item
