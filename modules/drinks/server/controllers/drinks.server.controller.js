@@ -52,6 +52,7 @@ exports.update = function (req, res) {
   drink.glass = req.body.glass;
   drink.origin = req.body.origin;
   drink.price = req.body.price;
+  drink.onMenu = req.body.onMenu;
 
   drink.save(function (err) {
     if (err) {

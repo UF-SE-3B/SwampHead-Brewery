@@ -53,6 +53,10 @@ var DrinkSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  onMenu: {
+    type: Boolean,
+    default: false
   }
 });
 
