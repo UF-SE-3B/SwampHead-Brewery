@@ -4,16 +4,21 @@
       <div class="col-md-4">
         <h1>Users</h1>
       </div>
-      <div class="col-md-4" style="margin-top: 2em">
-        <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" />
-      </div>
+      <form role="form" class="form-horizontal">
+          <div class="col-md-4 form-group " style="margin-top: 2em">
+            <div class="left-inner-addon">
+                <i class="glyphicon glyphicon-search " ></i>
+                <input class="form-control" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" >
+            </div>
+          </div>
+      </form>
     </div>
   </div>
   <div class="list-group">
-    <a ng-repeat="user in pagedItems" ui-sref="admin.user({userId: user._id})" class="list-group-item">
-      <h4 class="list-group-item-heading" ng-bind="user.username"></h4>
-      <p class="list-group-item-text pull-right small" ng-bind="user.roles"></p>
-      <p class="list-group-item-text" ng-bind="user.email"></p>
+    <a ng-repeat="user in pagedItems" ui-sref="admin.user({userId: user._id})" class="list-group-item ">
+      <h4 class="list-group-item-heading"  ng-bind="user.username"></h4>
+      <p class="list-group-item-text pull-right small " ng-bind="user.roles"></p>
+      <p class="list-group-item-text " ng-bind="user.email"></p>
     </a>
   </div>
 
