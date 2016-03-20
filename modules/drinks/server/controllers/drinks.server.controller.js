@@ -53,6 +53,7 @@ exports.update = function (req, res) {
   drink.origin = req.body.origin;
   drink.price = req.body.price;
   drink.onMenu = req.body.onMenu;
+  drink.drinkImageURL = req.body.drinkImageURL;
 
   drink.save(function (err) {
     if (err) {
@@ -120,4 +121,5 @@ exports.drinkByID = function (req, res, next, id) {
     req.drink = drink;
     next();
   });
+
 };
