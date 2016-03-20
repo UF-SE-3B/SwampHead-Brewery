@@ -10,6 +10,8 @@
   function DrinksController($scope, $state, drink, Authentication) {
     var vm = this;
 
+    $scope.authentication = Authentication;
+
     vm.drink = drink;
     vm.authentication = Authentication;
     vm.error = null;
@@ -48,5 +50,14 @@
         vm.error = res.data.message;
       }
     }
+
+    $scope.colorOptions= [
+    { id: 1, color: 'Light Yellow' },
+    { id: 2, color: 'Gold'},
+    { id: 3, color: 'Dark Gold' },
+    { id: 4, color: 'Light Brown' },
+    { id: 5, color: 'Brown' },
+    { id: 6, color: 'Red' },
+    { id: 7, color: 'Dark Brown' }];
   }
 })();

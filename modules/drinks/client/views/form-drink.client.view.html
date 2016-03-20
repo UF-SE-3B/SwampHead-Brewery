@@ -32,10 +32,18 @@
 
         <div class="form-group" show-errors>
           <label class="control-label" for="color">Color</label>
-          <input name="color" type="text" ng-model="vm.drink.color" id="color" class="form-control" placeholder="Drink Color" required>
-          <div ng-messages="vm.form.drinkForm.color.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Drink Color is required.</p>
+          <!-- <input name="color" type="text" ng-model="vm.drink.color" id="color" class="form-control" placeholder="Drink Color" required> -->
+
+
+          <div class ="controls">
+            <select ng-model="vm.drink.color" id="color" class="form-control" ng-options="vm.drink.color for color in colorOptions">
+              <option value=""> -- Choose A Color -- </option>
+            </select>
           </div>
+
+          <!-- <div ng-messages="vm.form.drinkForm.color.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink Color is required.</p>
+          </div> -->
         </div>
 
         <div class="form-group" show-errors>
