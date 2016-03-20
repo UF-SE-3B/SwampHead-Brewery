@@ -4,9 +4,12 @@
       <div class="col-md-4">
         <h1>Users</h1>
       </div>
-      <div class="col-md-4" style="margin-top: 2em">
-        <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" />
-      </div>
+      <form role="form" class="form-horizontal">
+          <div class="col-md-4 form-group has-feedback has-feedback-left " style="margin-top: 2em">
+            <i class="glyphicon glyphicon-search form-control-feedback" ></i>
+            <input class="form-control" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" />
+          </div>
+      </form>
     </div>
   </div>
   <div class="list-group">
