@@ -1,9 +1,10 @@
-<section>
+
+<section >
   <div class="page-header">
-    <h1>{{vm.drink._id ? 'Edit Drink' : 'New Drink'}}</h1>
+    <h1 style = "text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create a New Drink'}}</h1>
   </div>
   <div class="col-md-12">
-    <form name="vm.form.drinkForm" class="form-horizontal" ng-submit="vm.save(vm.form.drinkForm.$valid)" novalidate>
+    <form name="vm.form.drinkForm" class="col-md-6 col-md-offset-3" ng-submit="vm.save(vm.form.drinkForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="drinkName">Name</label>
@@ -12,6 +13,7 @@
             <p class="help-block error-text" ng-message="required">Drink Name is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="drinkStyle">Style</label>
           <input name="drinkStyle" type="text" ng-model="vm.drink.drinkStyle" id="drinkStyle" class="form-control" placeholder="Drink Style" required>
@@ -19,6 +21,7 @@
             <p class="help-block error-text" ng-message="required">Drink Sytle is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="drinkABV">ABV</label>
           <input name="drinkABV" type="text" ng-model="vm.drink.drinkABV" id="drinkABV" class="form-control" placeholder="Drink ABV" required>
@@ -26,6 +29,7 @@
             <p class="help-block error-text" ng-message="required">Drink ABV is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="color">Color</label>
           <input name="color" type="text" ng-model="vm.drink.color" id="color" class="form-control" placeholder="Drink Color" required>
@@ -33,6 +37,7 @@
             <p class="help-block error-text" ng-message="required">Drink Color is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="glass">Glass</label>
           <input name="glass" type="text" ng-model="vm.drink.glass" id="glass" class="form-control" placeholder="Drink Glass" required>
@@ -40,6 +45,7 @@
             <p class="help-block error-text" ng-message="required">Drink Glass is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="origin">Origin</label>
           <input name="origin" type="text" ng-model="vm.drink.origin" id="origin" class="form-control" placeholder="Drink Origin" required>
@@ -47,6 +53,7 @@
             <p class="help-block error-text" ng-message="required">Drink Origin is required.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
           <label class="control-label" for="Price">Price</label>
           <input name="price" type="text" ng-model="vm.drink.price" id="price" class="form-control" placeholder="Drink Price" required>
@@ -54,8 +61,11 @@
             <p class="help-block error-text" ng-message="required">Drink Price is required.</p>
           </div>
         </div>
+
         <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.drink._id ? 'Update' : 'Create'}}</button>
+
+            <button type="submit" class="btn btn-warning col-md-offset-5" >{{vm.drink._id ? 'Update' : 'Create'}}</button>
+
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
