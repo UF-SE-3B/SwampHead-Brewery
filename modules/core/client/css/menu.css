@@ -44,28 +44,6 @@ label, b, strong, body {
   display: block;
 }
 
-.tap-tables {
-
-}
-
-.cooler-tables {
-
-}
-
-.marker-pouring {
-  background: url("../fonts/markers.png");
-  background-position: -250px -33px;
-  width: 215px;
-  height: 35px;
-}
-
-.marker-cooler {
-  background: url("../fonts/markers.png");
-  background-position: 0px -90px;
-  width: 377px;
-  height: 50px;
-}
-
 .veneer-font {
   color: #f3f3ed;
   font-family: 'veneer', sans-serif;
