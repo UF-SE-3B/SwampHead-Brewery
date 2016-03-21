@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <section>
   <div class="page-header page-header-bottomless page-header-drink">
     <h1 style="text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create Drink'}}</h1>
+=======
+<section >
+  <div class="page-header page-header-bottomless page-header-drink">
+    <h1 style = "text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create Drink'}}</h1>
+>>>>>>> f64a5f5a3568fbd769a4698675ef449fb6a23d75
   </div>
   <div class="col-md-12">
     <form name="vm.form.drinkForm" class="col-md-6 col-md-offset-3" ng-submit="vm.save(vm.form.drinkForm.$valid)" novalidate>
@@ -65,8 +71,12 @@
         <br>
         <div class="form-group text-center">
 
+<<<<<<< HEAD
 
           <div class="form-group">
+=======
+            <button type="submit" class="btn alert-warning gray-text navbar-custom white-border" >{{vm.drink._id ? 'Update' : 'Create'}}</button>
+>>>>>>> f64a5f5a3568fbd769a4698675ef449fb6a23d75
 
             <button type="submit" class="btn alert-warning gray-text navbar-custom white-border">{{vm.drink._id ? 'Update' : 'Create'}}</button>
             <button ng-if="vm.drink._id" type="hidden" ng-click="vm.remove()" class="btn btn-default" id="deleteButton">Delete</button>
