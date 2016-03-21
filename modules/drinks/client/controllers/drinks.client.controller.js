@@ -73,30 +73,30 @@
     function selectImage(){
       if(document.getElementById('glassSelecter').selectedIndex === 0){
         if(document.getElementById('colorSelecter').selectedIndex === 0){
-          return "http://swamphead.com/wp-content/uploads/2013/11/light_pint1.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/light_pint1.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 1){
-          return "http://swamphead.com/wp-content/uploads/2013/11/pale_ale_pint_2.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/pale_ale_pint_2.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 2){
-          return "http://swamphead.com/wp-content/uploads/2013/11/oktoberfest_pint.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/oktoberfest_pint.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 3){
-          return "http://swamphead.com/wp-content/uploads/2013/11/red_pint.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/red_pint.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 4){
-          return "http://swamphead.com/wp-content/uploads/2013/11/stout_pint1.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/stout_pint1.png';
         }
       } else if (document.getElementById('glassSelecter').selectedIndex === 1){
         if(document.getElementById('colorSelecter').selectedIndex === 0){
-          return "http://swamphead.com/wp-content/uploads/2013/11/saison_snifter2.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/saison_snifter2.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 1){
-          return "http://swamphead.com/wp-content/uploads/2013/11/pale_ale_snifter.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/pale_ale_snifter.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 2){
-          return "http://swamphead.com/wp-content/uploads/2013/11/amber_snifter.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/amber_snifter.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 3){
-          return "http://swamphead.com/wp-content/uploads/2013/11/red_snifter.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/red_snifter.png';
         } else if (document.getElementById('colorSelecter').selectedIndex === 4){
-          return "http://swamphead.com/wp-content/uploads/2013/11/stout_snifter.png";
+          return 'http://swamphead.com/wp-content/uploads/2013/11/stout_snifter.png';
         }
       } else {
-        return "";
+        return '';
       }
 
     }
