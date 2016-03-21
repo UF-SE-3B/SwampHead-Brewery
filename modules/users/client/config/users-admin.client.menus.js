@@ -4,7 +4,7 @@
 angular.module('users.admin').run(['Menus',
   function (Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage Bartenders',
+      title: 'Manage Users',
       state: 'admin.users'
     });
   }

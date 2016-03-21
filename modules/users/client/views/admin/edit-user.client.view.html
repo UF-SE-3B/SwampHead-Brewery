@@ -1,9 +1,9 @@
 <section>
-  <div class="page-header">
-    <h1>User <span ng-bind="user.username"></span></h1>
+  <div class="page-header page-header-bottomless page-header-user">
+    <h1 style = "text-align:center">User <span ng-bind="user.username"></span></h1>
   </div>
   <div class="col-md-12">
-    <form name="userForm" ng-submit="update(userForm.$valid)" novalidate>
+    <form name="userForm" class="col-md-6 col-md-offset-3" ng-submit="update(userForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label for="firstName">First Name</label>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label class="control-label" for="roles">Roles (bartender, admin)</label>
+          <label class="control-label" for="roles">Roles (bartender, manager, admin)</label>
           <div class="controls">
             <input class="form-control" type="text" name="roles" ng-model="user.roles" id="roles" ng-list required />
             <div ng-messages="userForm.roles.$error" role="alert">
@@ -28,8 +28,9 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <input type="submit" value="Update" class="btn btn-default">
+        <br>
+        <div class="form-group text-center">
+          <input type="submit" value="Update" class="btn btn-primary clarendon-font">
         </div>
         <div ng-show="error" class="text-danger">
           <strong ng-bind="error"></strong>

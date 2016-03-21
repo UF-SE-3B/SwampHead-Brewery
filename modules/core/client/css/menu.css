@@ -1,0 +1,96 @@
+body {
+  background-color: #262421;
+}
+
+h1, h2 {
+  color: #f3f3ed;
+  font-family: 'ashwood', sans-serif;
+  font-weight: normal !important;
+}
+
+h1 {
+  font-size: 8em;
+  line-height: .8em;
+}
+
+h2 {
+  font-size: 3em;
+  line-height: .9em;
+}
+
+/*start styling specifically for other pages*/
+
+h4, label, p {
+  font-family: 'veneer', sans-serif;
+  font-weight: normal !important;
+}
+
+a, button {
+  font-family: 'clarendon', sans-serif;
+  font-weight: normal !important;
+}
+
+label, b, strong, body {
+  color: #f3f3ed;
+}
+
+/*end styling specifically for other pages*/
+
+.menu-img {
+  width: 1em;
+  height: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.guest-beer {
+  color: #a68f49;
+}
+
+.veneer-font {
+  color: #f3f3ed;
+  font-family: 'veneer', sans-serif;
+  font-weight: normal !important;
+}
+
+.clarendon-font {
+  color: #f3f3ed;
+  font-family: 'clarendon', sans-serif;
+  font-weight: normal !important;
+}
+
+table, th , td {
+  padding: 5px;
+  background-color: #262421;
+  color: #f3f3ed;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table-borderless-top tbody tr td, .table-borderless-top tbody tr th, .table-borderless-top thead tr th {
+    border-top: none;
+    border-bottom: 1px solid white;
+}
+
+.page-header-bottomless {
+  border-bottom: none;
+}
+
+@font-face {
+font-family: 'veneer';
+src: url("/fonts/Veneer.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'clarendon';
+  src: url("/fonts/Clarendon_Regular.otf") format("opentype");
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: 'ashwood';
+  src: url("/fonts/Ashwood_Condensed.ttf") format("truetype");
+}

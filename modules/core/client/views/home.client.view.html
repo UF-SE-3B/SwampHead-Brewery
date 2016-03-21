@@ -1,21 +1,43 @@
+<style>
+    body {
+    background-color: #FFFAF0;
+    background-image: url(https://suprawes.files.wordpress.com/2015/10/img_3871.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    @media (max-width: @iphone-screen) {
+      background-attachment: scroll;
+    }
+    span {
+      background-repeat: no-repeat;
+    }
+</style>
+
 <section ng-controller="HomeController">
-  <div class="jumbotron text-center">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-        <img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/client/img/brand/swamp.png" />
-      </div>
-    </div>
+  <div>
     <br>
-    <div class="row">
-      <p class="lead">
-        This will be where bartenders can see the drinks and check and uncheck them from the menu with permissions granted if logged in.
-      </p>
-    </div>
-    <div class="row">
-      <p>
-        <a class="btn btn-primary btn-lg" href="https://youtu.be/dQw4w9WgXcQ?t=85" target="_blank">Learn more</a>
-      </p>
-    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+  <!--  <div class="jumbotron text-center" style="width:100%; height:100%; background-color:#556B2F; color:white">  -->
+  <div class="row">
+    <img alt="MEAN.JS" class="img-responsive center-block" src="http://swamphead.com/wp-content/uploads/2015/09/Swamp-Head-Logo-Rectangle.jpg" style="width: 30em; height: 15em;" />
+  </div>
+  <br>
+  <br>
+  <div class="row" style="padding: 1em;">
+    <p class="lead text-shadow-menu" style="text-align:center; color: white;">
+      Welcome to the Swamp Head Brewery menu management and drink database application!
+    </p>
+  </div>
+  <br>
+  <div class="row">
+    <p class="text-center">
+      <a class="btn btn-lg navbar-custom gray-text" href="http://localhost:3000/menu" target="_blank">Menu</a>
+    </p>
+  </div>
+  <br>
   </div>
 
 </section>
