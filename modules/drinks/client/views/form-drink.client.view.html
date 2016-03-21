@@ -1,6 +1,6 @@
 <section >
-  <div class="page-header">
-    <h1 style = "text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create a New Drink'}}</h1>
+  <div class="page-header page-header-bottomless page-header-drink">
+    <h1 style = "text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create Drink'}}</h1>
   </div>
   <div class="col-md-12">
     <form name="vm.form.drinkForm" class="col-md-6 col-md-offset-3" ng-submit="vm.save(vm.form.drinkForm.$valid)" novalidate>
@@ -62,10 +62,10 @@
             <p class="help-block error-text" ng-message="required">Drink Price is required.</p>
           </div>
         </div>
+        <br>
+        <div class="form-group text-center">
 
-        <div class="form-group">
-
-            <button type="submit" class="btn btn-warning col-md-offset-5" >{{vm.drink._id ? 'Update' : 'Create'}}</button>
+            <button type="submit" class="btn alert-warning gray-text navbar-custom white-border" >{{vm.drink._id ? 'Update' : 'Create'}}</button>
 
         </div>
         <div ng-show="vm.error" class="text-danger">
