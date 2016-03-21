@@ -1,29 +1,43 @@
 <style>
-  body{background-color:#FFFAF0; background-image: url(http://www.forestthreats.org/products/photos-and-multimedia/photos/gallery/cypress/image); background-repeat: no-repeat;}
-  span{background-repeat: no-repeat;}
+    body {
+    background-color: #FFFAF0;
+    background-image: url(https://suprawes.files.wordpress.com/2015/10/img_3871.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    @media (max-width: @iphone-screen) {
+      background-attachment: scroll;
+    }
+    span {
+      background-repeat: no-repeat;
+    }
 </style>
 
 <section ng-controller="HomeController">
-  <div>  <br> <br> <br> <br></div>
-<!--  <div class="jumbotron text-center" style="width:100%; height:100%; background-color:#556B2F; color:white">  -->
-    <div class="row" >
-      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12" >
-        <span>
-          <img alt="MEAN.JS" class="img-responsive col-md-offset-1"  src="modules/core/client/img/brand/swamp.png"  />
-        </span>
-      </div>
-    </div>
+  <div>
     <br>
-    <div class="row">
-      <p class="lead" style="text-align:center; color: white">
-        Welcome to the Swamp Head Taplist web application.
-      </p>
-    </div>
-    <div class="row">
-      <p>
-        <a class="btn btn-warning btn-lg col-sm-offset-5" href="http://localhost:3000/menu" target="_blank">Menu</a>
-      </p>
-    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+  <!--  <div class="jumbotron text-center" style="width:100%; height:100%; background-color:#556B2F; color:white">  -->
+  <div class="row">
+    <img alt="MEAN.JS" class="img-responsive center-block" src="http://swamphead.com/wp-content/uploads/2015/09/Swamp-Head-Logo-Rectangle.jpg" style="width: 30em; height: 15em;" />
+  </div>
+  <br>
+  <br>
+  <div class="row" style="padding: 1em;">
+    <p class="lead text-shadow-menu" style="text-align:center; color: white;">
+      Welcome to the Swamp Head Brewery menu management and drink database application!
+    </p>
+  </div>
+  <br>
+  <div class="row">
+    <p class="text-center">
+      <a class="btn btn-lg navbar-custom gray-text" href="http://localhost:3000/menu" target="_blank">Menu</a>
+    </p>
+  </div>
+  <br>
   </div>
 
 </section>
