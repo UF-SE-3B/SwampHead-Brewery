@@ -15,7 +15,10 @@
           <th>Glass</th>
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 0">
-          <td class="veneer-font">{{drink.drinkName}}</td>
+          <td class="veneer-font">
+            <div>{{drink.drinkName}}</div>
+            <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
+          </td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
           <td class="clarendon-font">{{drink.drinkABV}}</td>
           <td class="clarendon-font">{{drink.price}}</td>
@@ -33,7 +36,10 @@
           <th>Glass</th>
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 1">
-          <td class="veneer-font">{{drink.drinkName}}</td>
+          <td class="veneer-font">
+            <div>{{drink.drinkName}}</div>
+            <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
+          </td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
           <td class="clarendon-font">{{drink.drinkABV}}</td>
           <td class="clarendon-font">{{drink.price}}</td>
