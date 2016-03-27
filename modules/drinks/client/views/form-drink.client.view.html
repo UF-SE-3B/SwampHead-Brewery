@@ -1,0 +1,78 @@
+<section>
+  <div class="page-header page-header-bottomless page-header-drink">
+    <h1 style="text-align:center">{{vm.drink._id ? 'Edit Drink' : 'Create Drink'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.drinkForm" class="col-md-6 col-md-offset-3" ng-submit="vm.save(vm.form.drinkForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="drinkName">Name</label>
+          <input name="drinkName" type="text" ng-model="vm.drink.drinkName" id="drinkName" class="form-control" placeholder="Drink Name" required>
+          <div ng-messages="vm.form.drinkForm.drinkName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink Name is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="drinkStyle">Style</label>
+          <input name="drinkStyle" type="text" ng-model="vm.drink.drinkStyle" id="drinkStyle" class="form-control" placeholder="Drink Style" required>
+          <div ng-messages="vm.form.drinkForm.drinkStyle.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink Sytle is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="drinkABV">ABV</label>
+          <input name="drinkABV" type="text" ng-model="vm.drink.drinkABV" id="drinkABV" class="form-control" placeholder="Drink ABV" required>
+          <div ng-messages="vm.form.drinkForm.drinkABV.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink ABV is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="color">Color</label>
+          <div class="controls">
+            <select data-ng-model="vm.drink.color" id="colorSelecter" class="form-control" ng-options="drinkColor.colorOption for drinkColor in colorOptions">
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="glass">Glass</label>
+          <div class="controls">
+            <select data-ng-model="vm.drink.glass" id="glassSelecter" class="form-control" ng-options="drinkGlass.glassOption for drinkGlass in glassOptions">
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="origin">Origin</label>
+          <input name="origin" type="text" ng-model="vm.drink.origin" id="origin" class="form-control" placeholder="Drink Origin" required>
+          <div ng-messages="vm.form.drinkForm.origin.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink Origin is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="Price">Price</label>
+          <input name="price" type="text" ng-model="vm.drink.price" id="price" class="form-control" placeholder="Drink Price" required>
+          <div ng-messages="vm.form.drinkForm.price.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Drink Price is required.</p>
+          </div>
+        </div>
+        <br>
+        <div class="form-group text-center">
+
+          <button type="submit" class="btn alert-warning gray-text navbar-custom white-border">{{vm.drink._id ? 'Update' : 'Create'}}</button>
+          <button ng-if="vm.drink._id" type="hidden" ng-click="vm.remove()" class="btn btn-default" id="deleteButton">Delete</button>
+
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+    </div>
+</section>

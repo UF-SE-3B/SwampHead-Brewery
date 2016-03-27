@@ -1,0 +1,54 @@
+<section style="margin-top: -50px;">
+  <div class="page-header page-header-bottomless">
+    <h1 align="center">The Wetlands</h1>
+    <h2 align="center">Swamp Head Brewery's Tasting Menu</h2>
+  </div>
+  <!-- <div class="marker-pouring"></div> -->
+  <div class="tap-tables">
+    <div class="col-md-6">
+      <table class="table table-striped table-hover table-borderless-top">
+        <tr class="clarendon-font">
+          <th>Beer</th>
+          <th>Style</th>
+          <th>ABV</th>
+          <th>Price</th>
+          <th>Glass</th>
+        </tr>
+        <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 0">
+          <td class="veneer-font">
+            <div>{{drink.drinkName}}</div>
+            <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
+          </td>
+          <td class="clarendon-font">{{drink.drinkStyle}}</td>
+          <td class="clarendon-font">{{drink.drinkABV}}</td>
+          <td class="clarendon-font">{{drink.price}}</td>
+          <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-striped table-hover table-borderless-top">
+        <tr class="clarendon-font">
+          <th>Beer</th>
+          <th>Style</th>
+          <th>ABV</th>
+          <th>Price</th>
+          <th>Glass</th>
+        </tr>
+        <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 2 == 1">
+          <td class="veneer-font">
+            <div>{{drink.drinkName}}</div>
+            <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
+          </td>
+          <td class="clarendon-font">{{drink.drinkStyle}}</td>
+          <td class="clarendon-font">{{drink.drinkABV}}</td>
+          <td class="clarendon-font">{{drink.price}}</td>
+          <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- <div class="marker-cooler"></div> -->
+  <div class="cooler-tables">
+  </div>
+</section>
