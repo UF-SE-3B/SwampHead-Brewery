@@ -2,10 +2,23 @@ body {
   background-color: #262421;
 }
 
+h3 {
+  color: #f3f3ed;
+  font-family: 'clarendon', sans-serif;
+
+}
+
 h1, h2 {
   color: #f3f3ed;
   font-family: 'ashwood', sans-serif;
   font-weight: normal !important;
+}
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
 }
 
 h1 {
