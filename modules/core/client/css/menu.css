@@ -1,5 +1,18 @@
+.footer{
+  position: fixed;
+  bottom: 1em;
+  width: 100%;
+  text-align: center;
+}
+
 body {
   background-color: #262421;
+}
+
+h3 {
+  color: #f3f3ed;
+  font-family: 'clarendon', sans-serif;
+
 }
 
 h1, h2 {
@@ -8,13 +21,20 @@ h1, h2 {
   font-weight: normal !important;
 }
 
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
 h1 {
   font-size: 8em;
   line-height: .8em;
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 4em;
   line-height: .9em;
 }
 
@@ -58,6 +78,13 @@ label, b, strong, body {
   color: #f3f3ed;
   font-family: 'clarendon', sans-serif;
   font-weight: normal !important;
+}
+
+.clarendon-font > h2 {
+  color: #f3f3ed;
+  font-family: 'clarendon', sans-serif;
+  font-weight: normal !important;
+  font-size: 2em;
 }
 
 table, th , td {
