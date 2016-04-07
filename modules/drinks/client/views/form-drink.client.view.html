@@ -29,22 +29,40 @@
           </div>
         </div>
 
-        <div class="form-group" show-errors>
-          <label class="control-label" for="color">Color</label>
-          <div class="controls">
-            <select data-ng-model="vm.drink.color" id="colorSelecter" class="form-control" ng-options="drinkColor.colorOption for drinkColor in colorOptions">
+        <div>
+          <div class="col-md-6" style="padding-left: 0px">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="color">Color</label>
+              <div class="controls">
+                <select class="form-control"
+                        data-ng-model="vm.drink.color"
+                        ng-init = "vm.drink.color = getDefaultColor()"
+                        ng-options="drinkColor.colorOption for drinkColor in colorOptions"
+                        ng-change="vm.dropDownChange()">
+                </select>
+              </div>
+            </div>
 
-            </select>
+            <div class="form-group" show-errors>
+              <label class="control-label" for="glass">Glass</label>
+              <div class="controls">
+                <select class="form-control"
+                        data-ng-model="vm.drink.glass"
+                        ng-init = "vm.drink.glass = getDefaultGlass()"
+                        ng-options="drinkGlass.glassOption for drinkGlass in glassOptions"
+                        ng-change="vm.dropDownChange()">
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group" show-errors>
-          <label class="control-label" for="glass">Glass</label>
-          <div class="controls">
-            <select data-ng-model="vm.drink.glass" id="glassSelecter" class="form-control" ng-options="drinkGlass.glassOption for drinkGlass in glassOptions">
-
-            </select>
+          <div class="col-md-2">
           </div>
+
+          <div class="col-md-4">
+            <img class="form-group" id="previewImg" src="{{vm.drink._id ? vm.drink.drinkImageURL : 'http://swamphead.com/wp-content/uploads/2016/03/Pint_Icon_PaleYellow.png'}}"/>
+          </div>
+
         </div>
 
         <div class="form-group" show-errors>
@@ -74,5 +92,6 @@
         </div>
       </fieldset>
     </form>
-    </div>
+  </div>
+
 </section>
