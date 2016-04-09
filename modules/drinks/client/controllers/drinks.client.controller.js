@@ -203,7 +203,7 @@
           return url + 'hef_Icon_Black.png';
         }
       } else {
-        return '';
+        return 'http://swamphead.com/wp-content/uploads/2016/03/circleLogo_White-01.png';
       }
     }
 
