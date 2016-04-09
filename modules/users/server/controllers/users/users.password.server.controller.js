@@ -13,7 +13,7 @@ var path = require('path'),
   crypto = require('crypto');
 
 //config.mailer.options
-
+//Server for forgotten password email
 var smtpTransport = nodemailer.createTransport({
   service: 'Mailgun',
   auth: {
