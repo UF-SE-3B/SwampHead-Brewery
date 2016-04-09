@@ -17,13 +17,13 @@
           <label class="control-label" for="drinkStyle">Style</label>
           <input name="drinkStyle" type="text" ng-model="vm.drink.drinkStyle" id="drinkStyle" class="form-control" placeholder="Drink Style" required>
           <div ng-messages="vm.form.drinkForm.drinkStyle.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Drink Sytle is required.</p>
+            <p class="help-block error-text" ng-message="required">Drink Style is required.</p>
           </div>
         </div>
 
         <div class="form-group" show-errors>
-          <label class="control-label" for="drinkABV">ABV</label>
-          <input name="drinkABV" type="text" ng-model="vm.drink.drinkABV" id="drinkABV" class="form-control" placeholder="Drink ABV" required>
+          <label class="control-label" for="drinkABV">% ABV</label>
+          <input name="drinkABV" type="number" min="0" max="100" ng-model="vm.drink.drinkABV" id="drinkABV" class="form-control" placeholder="Drink ABV" required>
           <div ng-messages="vm.form.drinkForm.drinkABV.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Drink ABV is required.</p>
           </div>
@@ -74,11 +74,20 @@
         </div>
 
         <div class="form-group" show-errors>
-          <label class="control-label" for="Price">Price</label>
-          <input name="price" type="text" ng-model="vm.drink.price" id="price" class="form-control" placeholder="Drink Price" required>
-          <div ng-messages="vm.form.drinkForm.price.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Drink Price is required.</p>
+          <div>
+            <label class="control-label">Leave Price blank for unoffered sizes</label>
           </div>
+          <label class="control-label" for="Price12">Price (12oz)</label>
+          <input name="price" type="number" min="0" ng-model="vm.drink.price12" id="price12" class="form-control" placeholder="12oz Drink Price">
+
+          <label class="control-label" for="Price16">Price (16oz)</label>
+          <input name="price" type="number" min="0" ng-model="vm.drink.price16" id="price16" class="form-control" placeholder="16oz Drink Price">
+
+          <label class="control-label" for="Price32">Price (32oz)</label>
+          <input name="price" type="number" min="0" ng-model="vm.drink.price32" id="price32" class="form-control" placeholder="32oz Drink Price">
+
+          <label class="control-label" for="Price64">Price (64oz)</label>
+          <input name="price" type="number" min="0" ng-model="vm.drink.price64" id="price64" class="form-control" placeholder="64oz Drink Price">
         </div>
         <br>
         <div class="form-group text-center">

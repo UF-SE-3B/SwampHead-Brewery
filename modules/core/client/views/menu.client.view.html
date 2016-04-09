@@ -27,8 +27,8 @@
             <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
           </td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
-          <td class="clarendon-font">{{drink.drinkABV}}</td>
-          <td class="clarendon-font">{{drink.price}}</td>
+          <td class="clarendon-font">%{{drink.drinkABV}}%</td>
+          <td class="clarendon-font">${{drink.price12}}/${{drink.price16}}/${{drink.price32}}/${{drink.price64}}</td>
           <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
         </tr>
       </table>
@@ -50,8 +50,8 @@
             <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
           </td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
-          <td class="clarendon-font">{{drink.drinkABV}}</td>
-          <td class="clarendon-font">{{drink.price12}}/{{drink.price16}}/{{drink.price32}}/{{drink.price64}}</td>
+          <td class="clarendon-font">{{drink.drinkABV}}%</td>
+          <td class="clarendon-font">${{drink.price12}}/${{drink.price16}}/${{drink.price32}}/${{drink.price64}}</td>
         </tr>
       </table>
     </div>
@@ -71,8 +71,8 @@
             <div class="guest-beer" ng-if="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1">{{drink.origin}}</div>
           </td>
           <td class="clarendon-font">{{drink.drinkStyle}}</td>
-          <td class="clarendon-font">{{drink.drinkABV}}</td>
-          <td class="clarendon-font">{{drink.price12}}/{{drink.price16}}/{{drink.price32}}/{{drink.price64}}</td>
+          <td class="clarendon-font">%{{drink.drinkABV}}</td>
+          <td class="clarendon-font">${{drink.price12}}/${{drink.price16}}/${{drink.price32}}/${{drink.price64}}</td>
 
         </tr>
       </table>
