@@ -12,7 +12,15 @@ var path = require('path'),
   async = require('async'),
   crypto = require('crypto');
 
-var smtpTransport = nodemailer.createTransport(config.mailer.options);
+//config.mailer.options
+
+var smtpTransport = nodemailer.createTransport({
+  service: 'Mailgun',
+  auth: {
+    user: 'postmaster@sandboxecf4de0af43842c2bb0ab95754dab41d.mailgun.org',
+    pass: '075fae57ad1bf8492eb56f1c706aa71f'
+  }
+});
 
 /**
  * Forgot for reset password (forgot POST)
