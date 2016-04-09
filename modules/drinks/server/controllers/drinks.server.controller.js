@@ -51,8 +51,14 @@ exports.update = function (req, res) {
   drink.color = req.body.color;
   drink.glass = req.body.glass;
   drink.origin = req.body.origin;
-  drink.price = req.body.price;
+  drink.price12 = req.body.price12;
+  drink.price16 = req.body.price16;
+  drink.price32 = req.body.price32;
+  drink.price64 = req.body.price64;
   drink.onMenu = req.body.onMenu;
+  drink.menuNumber = req.body.menuNumber;
+  drink.menuIndex = req.body.menuIndex;
+  drink.tastingRoomOnly = req.body.tastingRoomOnly;
   drink.drinkImageURL = req.body.drinkImageURL;
 
   drink.save(function (err) {

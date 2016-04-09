@@ -26,7 +26,8 @@
             <th>ABV</th>
             <th>Price</th>
             <th>Glass</th>
-            <th>On Menu</th>
+            <th>On Menu?</th>
+            <th>Tasting Room Only?</th>
             <th>Edit</th>
           </tr>
           <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true} | filter:searchText | orderBy:'drinkName'">
@@ -37,6 +38,9 @@
             <td class="clarendon-font">{{drink.glass}}</td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
+            </td>
+            <td>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
             </td>
             <td>
               <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
@@ -56,7 +60,8 @@
             <th>ABV</th>
             <th>Price</th>
             <th>Glass</th>
-            <th>On Menu</th>
+            <th>On Menu?</th>
+            <th>Tasting Room Only?</th>
             <th>Edit</th>
           </tr>
           <tr class="veneer-font" ng-repeat="drink in vm.drinks | filter:{onMenu:false} | filter:searchText | orderBy:'drinkName'">
@@ -67,6 +72,9 @@
             <td class="clarendon-font">{{drink.glass}}</td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox"></input>
+            </td>
+            <td>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox"></input>
             </td>
             <td>
               <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
