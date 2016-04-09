@@ -64,27 +64,26 @@ label, b, strong, body {
   display: block;
 }
 
-.guest-beer {
-  color: #a68f49;
-}
-
 .veneer-font {
   color: #f3f3ed;
   font-family: 'veneer', sans-serif;
   font-weight: normal !important;
 }
-
 .clarendon-font {
-  color: #f3f3ed;
+
   font-family: 'clarendon', sans-serif;
   font-weight: normal !important;
 }
 
 .clarendon-font > h2 {
-  color: #f3f3ed;
+
   font-family: 'clarendon', sans-serif;
   font-weight: normal !important;
   font-size: 2em;
+}
+
+.guest-beer {
+  color: #a68f49;
 }
 
 table, th , td {
@@ -100,6 +99,11 @@ table, th , td {
 .table-borderless-top tbody tr td, .table-borderless-top tbody tr th, .table-borderless-top thead tr th {
     border-top: none;
     border-bottom: 1px solid white;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border-top: none;
+    border-bottom: none;
 }
 
 .page-header-bottomless {
