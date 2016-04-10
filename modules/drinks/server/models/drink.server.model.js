@@ -23,9 +23,8 @@ var DrinkSchema = new Schema({
     default: ''
   },
   drinkABV: {
-    type: String,
-    trim: true,
-    default: ''
+    type: Number,
+    default: 0
   },
   color: {
     type: String,
@@ -47,19 +46,15 @@ var DrinkSchema = new Schema({
   },
   price12: {
     type: Number,
-    default: 0
   },
   price16: {
     type: Number,
-    default: 0
   },
   price32: {
     type: Number,
-    default: 0
   },
   price64: {
     type: Number,
-    default: 0
   },
   updated: {
     type: Date
