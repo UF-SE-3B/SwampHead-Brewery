@@ -34,8 +34,10 @@ h1 {
 }
 
 h2 {
-  font-size: 4em;
+  font-size: 5em;
   line-height: .9em;
+  margin-bottom: 0;
+  margin-top: 10;
 }
 
 /*start styling specifically for other pages*/

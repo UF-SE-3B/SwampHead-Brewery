@@ -16,6 +16,7 @@
           <th style="vertical-align: middle";>ABV</th>
           <th>12oz<br>16oz</th>
           <th>32oz<br>64oz</th>
+          <th></th>
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 3 == 0">
           <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
@@ -23,14 +24,17 @@
               <div>{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
-            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price : '---'}}</div>
-              <div>{{drink.price ? drink.price : '---'}}</div>
+              <div>{{drink.price12 ? '$' + drink.price12 : '---'}}</div>
+              <div>{{drink.price16 ? '$' + drink.price16 : '---'}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price  : '---'}}</div>
-              <div>{{drink.price ? drink.price  : '---'}}</div>
+              <div>{{drink.price32 ? '$' + drink.price32  : '---'}}</div>
+              <div>{{drink.price64 ? '$' + drink.price64  : '---'}}</div>
+            </td>
+            <td>
+              <img ng-show="drink.tastingRoomOnly == true" src="http://swamphead.com/wp-content/uploads/2016/03/Bird-Only.png" width="35em"></img>
             </td>
           </tr>
       </table>
@@ -46,6 +50,7 @@
           <th>ABV</th>
           <th>Glass</th>
           <th>Growler</th>
+          <th></th>
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 5 == 1">
           <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
@@ -53,21 +58,25 @@
               <div>{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
-            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price : '---'}}</div>
-              <div>{{drink.price ? drink.price : '---'}}</div>
+              <div>{{drink.price12 ? '$' + drink.price12 : '---'}}</div>
+              <div>{{drink.price16 ? '$' + drink.price16 : '---'}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price : '---'}}</div>
-              <div>{{drink.price ? drink.price : '---'}}</div>
+              <div>{{drink.price32 ? '$' + drink.price32 : '---'}}</div>
+              <div>{{drink.price64 ? '$' + drink.price64 : '---'}}</div>
+            </td>
+            <td>
+              <img ng-show="drink.tastingRoomOnly == true" src="http://swamphead.com/wp-content/uploads/2016/03/Bird-Only.png" width="35em"></img>
             </td>
           </tr>
       </table>
-      <div style="border: solid; vertical-align: middle; text-align: center" width="200px" height="100px">
-          <p> Bird equals tap room only yooooo</p>
-          <p> This is the legend for the menu!</p>
-          <img width="1em;" src="http://swamphead.com/wp-content/uploads/2016/03/Bird-Only.png"></img>
+      <br>
+      <div style="border: solid; vertical-align: middle; text-align: center; padding-bottom: 5px;" width="200px" height="100px">
+          <h4 class="clarendon-font">Tasting room only beers have <img src="http://swamphead.com/wp-content/uploads/2016/03/Bird-Only.png" width="35em"></img></h4>
+          <h4 class="clarendon-font guest-beer">Guest beers are gold.</h4>
+          <h3>Cans and bottles are available in the coolers.</h3>
       </div>
     </div>
     <div class="col-md-4">
@@ -78,6 +87,7 @@
           <th>ABV</th>
           <th>Glass</th>
           <th>Growler</th>
+          <th></th>
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 3 == 2">
           <td><img class="menu-img" src="{{drink.drinkImageURL}}"></img></td>
@@ -85,21 +95,19 @@
               <div>{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
-            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price : '---'}}</div>
-              <div>{{drink.price ? drink.price : '---'}}</div>
+              <div>{{drink.price12 ? '$' + drink.price12 : '---'}}</div>
+              <div>{{drink.price16 ? '$' + drink.price16 : '---'}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.price ? drink.price : '---'}}</div>
-              <div>{{drink.price ? drink.price : '---'}}</div>
+              <div>{{drink.price32 ? '$' + drink.price32 : '---'}}</div>
+              <div>{{drink.price64 ? '$' + drink.price64 : '---'}}</div>
+            </td>
+            <td>
+              <img ng-show="drink.tastingRoomOnly == true" src="http://swamphead.com/wp-content/uploads/2016/03/Bird-Only.png" width="35em"></img>
             </td>
           </tr>
       </table>
     </div>
   </div>
-
-</div>
-<div class="footer clarendon-font">
-  <h2>Cans and bottles are available in the coolers</h2>
-</div>
