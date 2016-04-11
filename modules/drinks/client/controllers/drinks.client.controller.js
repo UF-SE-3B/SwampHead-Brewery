@@ -24,6 +24,7 @@
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
         vm.drink.$remove($state.go('drinks.list'));
+        toastr.info(vm.drink.drinkName + ' was deleted!');
       }
     }
 
@@ -31,7 +32,7 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
-        toastr.error( 'Drink not updated');
+        toastr.error('Drink not updated');
         return false;
       }
 
@@ -58,6 +59,8 @@
       function errorCallback(res) {
         vm.error = res.data.message;
       }
+
+      toastr.info(vm.drink.drinkName + ' was updated!');
     }
 
     $scope.colorOptions= [
