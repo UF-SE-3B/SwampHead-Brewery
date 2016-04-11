@@ -5,9 +5,9 @@
     .module('drinks')
     .controller('DrinksController', DrinksController);
 
-  DrinksController.$inject = ['$scope', '$state', 'drinkResolve', 'Authentication'];
+  DrinksController.$inject = ['$scope', '$state', 'drinkResolve', 'Authentication', 'toastr'];
 
-  function DrinksController($scope, $state, drink, Authentication) {
+  function DrinksController($scope, $state, drink, Authentication, toastr) {
     var vm = this;
 
     $scope.authentication = Authentication;
@@ -94,6 +94,7 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
+        toastr.error( 'Drink not updated');
         return false;
       }
 
