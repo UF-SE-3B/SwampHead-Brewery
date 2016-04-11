@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('drinks', ['ngAnimate', 'toastr'])
+    .module('drinks')
     .controller('DrinksListController', DrinksListController);
 
   DrinksListController.$inject = ['DrinksService', '$state' , '$scope', 'toastr'];
