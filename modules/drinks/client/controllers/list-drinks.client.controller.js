@@ -40,5 +40,6 @@
         drink.drinkName + ' was removed from tap!'
       );
     }
+
   }
 })();
