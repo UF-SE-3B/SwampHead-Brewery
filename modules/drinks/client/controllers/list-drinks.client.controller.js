@@ -2,14 +2,16 @@
   'use strict';
 
   angular
-    .module('drinks')
+    .module('drinks', ['ngAnimate', 'toastr'])
     .controller('DrinksListController', DrinksListController);
 
-  DrinksListController.$inject = ['DrinksService', '$state'];
+  DrinksListController.$inject = ['DrinksService', '$state' , '$scope', 'toastr'];
 
-  function DrinksListController(DrinksService, $state) {
+  function DrinksListController(DrinksService, $state, $scope, toastr) {
     var vm = this;
     vm.AddToMenu = AddToMenu;
+    vm.mvOnMenu  = mvOnMenu;
+    vm.mvOffMenu = mvOffMenu;
 
     vm.drinks = DrinksService.query();
 
@@ -25,6 +27,14 @@
       function errorCallback(res) {
         vm.error = res.data.message;
       }
+    }
+
+    function mvOnMenu(drink) {
+      toastr.success(drink.drinkName + ' was added to tap!');
+    }
+
+    function mvOffMenu(drink) {
+      toastr.success(drink.drinkName + ' was removed from tap!');
     }
   }
 })();
