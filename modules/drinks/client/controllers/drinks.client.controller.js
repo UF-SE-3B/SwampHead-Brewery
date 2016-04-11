@@ -83,6 +83,7 @@
         $state.go('drinks.list', {
           drinkId: res._id
         });
+        toastr.info(vm.drink.drinkName + ' was deleted!');
       }
 
       function errorCallback(res) {
@@ -94,7 +95,7 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
-        toastr.error( 'Drink not updated');
+        toastr.error('Drink not updated');
         return false;
       }
 
@@ -117,6 +118,8 @@
       function errorCallback(res) {
         vm.error = res.data.message;
       }
+
+      toastr.info(vm.drink.drinkName + ' was updated!');
     }
 
     function selectImage(){
