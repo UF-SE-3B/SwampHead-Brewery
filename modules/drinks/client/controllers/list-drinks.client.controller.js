@@ -29,12 +29,20 @@
       }
     }
 
+    //Menu drink toggle notification via toastr
     function mvOnMenu(drink) {
-      toastr.success(drink.drinkName + ' was added to tap!');
+      toastr.success(
+          drink.drinkName + ' was added to tap!',
+          {
+            closeHtml: '<button></button>'
+          }
+      );
+    }
+    function mvOffMenu(drink) {
+      toastr.success(
+          drink.drinkName + ' was removed from tap!'
+      );
     }
 
-    function mvOffMenu(drink) {
-      toastr.success(drink.drinkName + ' was removed from tap!');
-    }
   }
 })();
