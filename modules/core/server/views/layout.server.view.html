@@ -32,7 +32,7 @@
   <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
 
   <!-- Application CSS Files -->
-  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+  {% for cssFile in cssFiles %}<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" /><link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 </head>
 
 <body class="ng-cloak">
@@ -50,11 +50,11 @@
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
   <!-- Load the toastr script files -->
-<link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
 
   <!--Application JavaScript Files-->
   {% for jsFile in jsFiles %}
-      <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script><script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script><script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
 
   {% if livereload %}
   <!--Livereload script rendered -->
