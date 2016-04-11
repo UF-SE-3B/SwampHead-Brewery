@@ -32,7 +32,7 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
-        toastr.error('Drink not updated');
+        toastr.error('Drink not updated!');
         return false;
       }
 

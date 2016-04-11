@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users.admin').controller('UserController', ['$scope', '$state', 'Authentication', 'userResolve',
-  function ($scope, $state, Authentication, userResolve) {
+angular.module('users.admin').controller('UserController', ['$scope', '$state', 'Authentication', 'userResolve', 'toastr' ,
+  function ($scope, $state, Authentication, userResolve, toastr) {
     $scope.authentication = Authentication;
     $scope.user = userResolve;
 
@@ -14,6 +14,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         } else {
           $scope.user.$remove(function () {
             $state.go('admin.users');
+            toastr.info($scope.user.username + ' was deleted!');
           });
         }
       }
@@ -22,6 +23,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.update = function (isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'userForm');
+        toastr.error('User not updated!');
 
         return false;
       }
@@ -32,8 +34,10 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         $state.go('admin.user', {
           userId: user._id
         });
+        toastr.info(user.username + ' was updated!');
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
+        toastr.warning($scope.error);
       });
     };
   }
