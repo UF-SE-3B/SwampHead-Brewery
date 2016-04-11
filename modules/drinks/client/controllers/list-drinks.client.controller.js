@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('drinks')
+    .module('drinks', ['ngAnimate', 'toastr'])
     .controller('DrinksListController', DrinksListController);
 
   DrinksListController.$inject = ['DrinksService', '$state' , '$scope', 'toastr'];
@@ -40,6 +40,5 @@
         drink.drinkName + ' was removed from tap!'
       );
     }
-
   }
 })();
