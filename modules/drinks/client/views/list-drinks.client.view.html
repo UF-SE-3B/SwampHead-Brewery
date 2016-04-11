@@ -18,7 +18,10 @@
 
     <div style="font-size:1.1em;" class="row">
       <div class="col-md-12">
-        <h2>Now Serving</h2>
+        <h2>
+          Now Serving
+          <span class=" col-md-offset-6"style = "font-size: .6em"> Drinks on Tap: {{(vm.drinks |filter:{onMenu:true}).length}}</span>
+        </h2>
         <table class="table table-striped table-hover table-borderless-top">
           <tr class="clarendon-font">
             <th>Name</th>
