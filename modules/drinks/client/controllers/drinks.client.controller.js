@@ -20,6 +20,7 @@
     vm.save = save;
     vm.cancel = cancel;
     vm.dropDownChange = dropDownChange;
+    var isEdit = vm.drink._id ? true : false;
 
     $scope.colorOptions= [
     { id: 1, colorOption: 'Pale Yellow' },
@@ -66,6 +67,8 @@
         return ($scope.glassOptions[2]);
       } else if ($scope.glassOptions[3].glassOption === vm.drink.glass) {
         return ($scope.glassOptions[3]);
+      } else if ($scope.glassOptions[4].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[4]);
       } else {
         return;
       }
@@ -75,6 +78,7 @@
       document.getElementById("previewImg").src= selectImage();
     }
 
+    // delete drink from database
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
         vm.drink.$remove(successCallback, errorCallback);
@@ -84,7 +88,7 @@
         $state.go('drinks.list', {
           drinkId: res._id
         });
-        toastr.info(vm.drink.drinkName + ' was deleted!');
+        toastr.success(vm.drink.drinkName + ' was deleted!');
       }
 
       function errorCallback(res) {
@@ -114,13 +118,17 @@
         $state.go('drinks.list', {
           drinkId: res._id
         });
+        if(isEdit){
+          toastr.success(vm.drink.drinkName + ' was updated!');
+        } else {
+          toastr.success(vm.drink.drinkName + ' was created!');
+        }
       }
 
       function errorCallback(res) {
         vm.error = res.data.message;
       }
 
-      toastr.info(vm.drink.drinkName + ' was updated!');
     }
 
     function cancel() {
