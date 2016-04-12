@@ -15,6 +15,7 @@
 
     vm.drinks = DrinksService.query();
 
+    // switch to ontap/offtap menu
     function AddToMenu(drink) {
       drink.$update(successCallback, errorCallback);
 

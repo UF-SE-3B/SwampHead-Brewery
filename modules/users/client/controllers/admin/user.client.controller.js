@@ -5,6 +5,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.authentication = Authentication;
     $scope.user = userResolve;
 
+    // delete user from database
     $scope.remove = function (user) {
       if (confirm('Are you sure you want to delete this user?')) {
         if (user) {
@@ -20,8 +21,9 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
       }
     };
 
+    // on click of update button
     $scope.update = function (isValid) {
-      if (!isValid) {
+      if (!isValid) { //if drink does not have all fields filled
         $scope.$broadcast('show-errors-check-validity', 'userForm');
         toastr.error('User not updated!');
 
@@ -30,6 +32,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
 
       var user = $scope.user;
 
+      //pass 'isValid', go back user list on success
       user.$update(function () {
         $state.go('admin.user', {
           userId: user._id
