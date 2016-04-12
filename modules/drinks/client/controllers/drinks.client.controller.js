@@ -67,6 +67,8 @@
         return ($scope.glassOptions[2]);
       } else if ($scope.glassOptions[3].glassOption === vm.drink.glass) {
         return ($scope.glassOptions[3]);
+      } else if ($scope.glassOptions[4].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[4]);
       } else {
         return;
       }
