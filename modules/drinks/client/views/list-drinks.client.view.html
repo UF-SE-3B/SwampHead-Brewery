@@ -29,7 +29,6 @@
             <th>Style</th>
             <th>ABV</th>
             <th>Prices</th>
-            <th>Glass</th>
             <th>On Menu?</th>
             <th>Tasting Room Only?</th>
             <th>Edit</th>
@@ -40,7 +39,6 @@
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkStyle}}</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.price12 ? '$' + drink.price12 : '---'}} {{drink.price16 ? '$' + drink.price16 : '---'}} {{drink.price32 ? '$' + drink.price32 : '---'}} {{drink.price64 ? '$' + drink.price64 : '---'}}</td>
-            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.glass}}</td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOffMenu(drink)" class="center-checkbox" >
             </td>
@@ -65,7 +63,6 @@
             <th>Style</th>
             <th>ABV</th>
             <th>Prices</th>
-            <th>Glass</th>
             <th>On Menu?</th>
             <th>Tasting Room Only?</th>
             <th>Edit</th>
@@ -76,7 +73,6 @@
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkStyle}}</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.price12 ? '$' + drink.price12 : '---'}} {{drink.price16 ? '$' + drink.price16 : '---'}} {{drink.price32 ? '$' + drink.price32 : '---'}} {{drink.price64 ? '$' + drink.price64 : '---'}}</td>
-            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.glass}}</td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOnMenu(drink)" class="center-checkbox">
             </td>
@@ -85,13 +81,13 @@
             </td>
             <td>
               <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></a>
-          </td>  
+          </td>
           </tr>
         </table>
       </div>
     </div>
-    <div class="alert text-center gray-text btn-primary">
-      <a ui-sref="drinks.create">Create Drink</a>
+    <div>
+      <a ui-sref="drinks.create"><button class="btn btn-primary btn-lg btn-block">Create Drink</button></a>
     </div>
   </div>
 </section>
