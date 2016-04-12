@@ -68,6 +68,14 @@ a:hover .header-profile-image {
 }
 /**** End Link CSS ****/
 
+.btn-xl {
+        font-size: 22px;
+        padding: 10px 16px;
+        border-radius: 6px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 .glyphicon {
     color: #616157;
 }

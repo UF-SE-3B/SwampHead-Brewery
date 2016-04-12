@@ -18,6 +18,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.cancel = cancel;
     vm.dropDownChange = dropDownChange;
 
     $scope.colorOptions= [
@@ -120,6 +121,10 @@
       }
 
       toastr.info(vm.drink.drinkName + ' was updated!');
+    }
+
+    function cancel() {
+      $state.go('drinks.list');
     }
 
     function selectImage(){
