@@ -4,7 +4,7 @@ angular.module('core').controller('MenuController', ['$scope', 'Authentication',
   function($scope, Authentication, DrinksService) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
-    
+
     var vm = this;
     var drinks = DrinksService.query();
     vm.drinks = drinks;
