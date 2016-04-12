@@ -14,7 +14,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         } else {
           $scope.user.$remove(function () {
             $state.go('admin.users');
-            toastr.info($scope.user.username + ' was deleted!');
+            toastr.success($scope.user.username + ' was deleted!');
           });
         }
       }
@@ -34,7 +34,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         $state.go('admin.user', {
           userId: user._id
         });
-        toastr.info(user.username + ' was updated!');
+        toastr.success(user.username + ' was updated!');
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
         toastr.warning($scope.error);
