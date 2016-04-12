@@ -7,7 +7,7 @@
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="drinkName">Name</label>
-          <input name="drinkName" type="text" ng-model="vm.drink.drinkName" id="drinkName" class="form-control" placeholder="Drink Name" required>
+          <input name="drinkName" type="text" ng-model="vm.drink.drinkName" id="drinkName" class="form-control" placeholder="Drink Name" required maxlength="22">
           <div ng-messages="vm.form.drinkForm.drinkName.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Drink Name is required.</p>
           </div>
@@ -15,7 +15,7 @@
 
         <div class="form-group" show-errors>
           <label class="control-label" for="drinkStyle">Style</label>
-          <input name="drinkStyle" type="text" ng-model="vm.drink.drinkStyle" id="drinkStyle" class="form-control" placeholder="Drink Style" required>
+          <input name="drinkStyle" type="text" ng-model="vm.drink.drinkStyle" id="drinkStyle" class="form-control" placeholder="Drink Style" required maxlength="22">
           <div ng-messages="vm.form.drinkForm.drinkStyle.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Drink Style is required.</p>
           </div>
