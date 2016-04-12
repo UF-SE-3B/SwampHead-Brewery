@@ -1,5 +1,5 @@
 /* globals define */
-/*
+
 (function (root, factory) {
 
   if (typeof define === 'function' && define.amd) {
@@ -39,7 +39,7 @@
       // An array of required tests. A password *must* pass these tests in order
       // to be considered strong.
       required: [
-/*
+
         // enforce a minimum length
         function(password) {
           if (password.length < owasp.configs.minLength) {
@@ -73,7 +73,7 @@
       // 2. A password need only to pass this.configs.minOptionalTestsToPass
       //    number of these optional tests in order to be considered strong.
       optional: [
-/*
+
         // require at least one lowercase letter
         function(password) {
           if (!/[a-z]/.test(password)) {
@@ -179,4 +179,3 @@
 ));
 
 //Erase all password requirements
-*/
