@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #262421;
+  background-color: #1B1B1A;
 }
 
 h3 {
@@ -36,8 +36,8 @@ h1 {
 h2 {
   font-size: 5em;
   line-height: .9em;
-  margin-bottom: 0;
-  margin-top: 10;
+  margin-bottom: 7px;
+  margin-top: 0;
 }
 
 /*start styling specifically for other pages*/
@@ -58,12 +58,15 @@ label, b, strong, body {
 
 /*end styling specifically for other pages*/
 
-.menu-img {
-  width: 1em;
-  height: 2em;
+.beer-img {
+  width: 1.0em;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+img.bird {
+  width: 2.2em;
 }
 
 .veneer-font {
@@ -106,6 +109,20 @@ table, th , td {
 .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
     border-top: none;
     border-bottom: none;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color:#262421;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#262421;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+tr.found{
+    background-color:#19140E;
 }
 
 .page-header-bottomless {
