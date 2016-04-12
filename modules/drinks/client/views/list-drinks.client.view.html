@@ -40,14 +40,14 @@
             <td class="clarendon-font">${{drink.price12}} / {{drink.price16}} / {{drink.price32}} / {{drink.price64}}</td>
             <td class="clarendon-font">{{drink.glass}}</td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOffMenu(drink)" class="center-checkbox" >
             </td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
             </td>
             <td>
-              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
-            </a>
+              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></a>
+            </td>
           </tr>
         </table>
       </div>
@@ -74,20 +74,20 @@
             <td class="clarendon-font">${{drink.price12}} / {{drink.price16}} / {{drink.price32}} / {{drink.price64}}</td>
             <td class="clarendon-font">{{drink.glass}}</td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox"></input>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOnMenu(drink)" class="center-checkbox">
             </td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox"></input>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
             </td>
             <td>
-              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
-            </a>
+              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></a>
+          </td>  
           </tr>
         </table>
       </div>
     </div>
-    </br>
     <div class="alert text-center gray-text btn-primary">
       <a ui-sref="drinks.create">Create Drink</a>
     </div>
+  </div>
 </section>
