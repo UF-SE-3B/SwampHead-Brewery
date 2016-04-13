@@ -5,6 +5,39 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.authentication = Authentication;
     $scope.user = userResolve;
 
+    var vm = this;
+    vm.person = userResolve;
+    vm.dropDown = dropDown;
+
+    $scope.roleOptions= [
+    { id: 1, roleOption: 'bartender' },
+    { id: 2, roleOption: 'manager' },
+    { id: 3, roleOption: 'admin' }];
+
+    function dropDown(){
+      alert(document.getElementById("dropDownRoles").value);
+    }
+
+    vm.person.$promise.then(function(result) {
+      console.log($scope.user.roles);
+      if($scope.roleOptions[0].roleOption === $scope.user.roles[0]){
+        console.log($scope.user.roles[1]);
+        $scope.user.roles = $scope.roleOptions[0];
+        // document.getElementById("dropDownRoles").select = $scope.roleOptions[0];
+      } else if ($scope.roleOptions[1].roleOption === $scope.user.roles[0]) {
+        console.log($scope.user.roles[0]);
+        $scope.user.roles = $scope.roleOptions[1];
+        // document.getElementById("dropDownRoles").select = $scope.roleOptions[1];
+      } else if ($scope.roleOptions[2].roleOption === $scope.user.roles[0]) {
+        console.log($scope.user.roles[0]);
+        $scope.user.roles = $scope.roleOptions[2];
+      } else {
+        return;
+      }
+    }, function(err) {
+      console.log(err); // Error: "It broke"
+    });
+
     // delete user from database
     $scope.remove = function (user) {
       if (confirm('Are you sure you want to delete this user?')) {
@@ -29,7 +62,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
 
         return false;
       }
-
+      $scope.user.roles = $scope.user.roles.roleOption;
       var user = $scope.user;
 
       //pass 'isValid', go back user list on success

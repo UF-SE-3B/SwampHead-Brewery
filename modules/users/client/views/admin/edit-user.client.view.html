@@ -22,9 +22,12 @@
         <div class="form-group" show-errors>
           <label class="control-label" for="roles">Roles (bartender, manager, admin)</label>
           <div class="controls">
-            <input class="form-control" type="text" name="roles" ng-model="user.roles" id="roles" ng-list required />
+            <!-- <input class="form-control" type="text" name="roles" ng-model="user.roles" id="roles" ng-list required /> -->
+
+            <select id="dropDownRoles" name="roles" class="form-control" data-ng-model="user.roles" ng-init="user.roles = roleOptions[1]" ng-options="userRole.roleOption for userRole in roleOptions" required>
+            </select>
             <div ng-messages="userForm.roles.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">At least one role is required.</p>
+              <p class="help-block error-text" ng-message="required">At role is required.</p>
             </div>
           </div>
         </div>
