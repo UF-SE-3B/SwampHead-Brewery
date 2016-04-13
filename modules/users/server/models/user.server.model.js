@@ -79,9 +79,9 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['bartender','manager', 'admin']
+      enum: ['bartender','manager', 'admin'] //Three distinct roles, can be managed by admin UI
     }],
-    default: ['bartender'],
+    default: ['bartender'], // default role when account is created 
     required: 'Please provide at least one role'
   },
   updated: {

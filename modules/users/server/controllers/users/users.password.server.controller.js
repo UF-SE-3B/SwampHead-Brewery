@@ -12,8 +12,17 @@ var path = require('path'),
   async = require('async'),
   crypto = require('crypto');
 
-//config.mailer.options
+//config.mailer.options //Original mail server 
 //Server for forgotten password email
+
+/*This uses MailGun to deliver the forgotten password email. The credentials
+should be included in the project documentation. If issues arise, create
+a new mailgun account and update the username and password here.
+
+This service was used because the MEANjs deployment complicates the setup of
+a reliable mail server. This service is simple and free to use.
+
+*/
 var smtpTransport = nodemailer.createTransport({
   service: 'Mailgun',
   auth: {

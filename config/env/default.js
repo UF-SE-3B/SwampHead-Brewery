@@ -2,6 +2,9 @@
 
 module.exports = {
   app: {
+
+    //To change the head bar edit the information below
+
     title: 'Swamp Head Brewery',
     description: 'Drink database for Swamp Head Brewery Tap List.',
     keywords: '',
@@ -28,6 +31,7 @@ module.exports = {
   sessionKey: 'sessionId',
   sessionCollection: 'sessions',
   logo: 'modules/core/client/img/brand/logo.png',
+  //This is the icon on the head bar
   favicon: 'modules/core/client/img/brand/Bird-Only.png',
   uploads: {
     profileUpload: {
