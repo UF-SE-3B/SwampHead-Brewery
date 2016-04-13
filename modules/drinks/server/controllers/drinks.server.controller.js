@@ -93,7 +93,6 @@ exports.delete = function (req, res) {
  * List of Drinks
  */
 exports.list = function (req, res) {
-  console.log('hello');
   Drink.find().sort('-created').exec(function (err, drinks) {
     if (err) {
       return res.status(400).send({

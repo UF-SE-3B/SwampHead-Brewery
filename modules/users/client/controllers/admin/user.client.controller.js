@@ -7,29 +7,20 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
 
     var vm = this;
     vm.person = userResolve;
-    vm.dropDown = dropDown;
 
+    //drop down options for roles
     $scope.roleOptions= [
     { id: 1, roleOption: 'bartender' },
     { id: 2, roleOption: 'manager' },
     { id: 3, roleOption: 'admin' }];
 
-    function dropDown(){
-      alert(document.getElementById("dropDownRoles").value);
-    }
-
+    //set drop down once we have the roles info
     vm.person.$promise.then(function(result) {
-      console.log($scope.user.roles);
       if($scope.roleOptions[0].roleOption === $scope.user.roles[0]){
-        console.log($scope.user.roles[1]);
         $scope.user.roles = $scope.roleOptions[0];
-        // document.getElementById("dropDownRoles").select = $scope.roleOptions[0];
       } else if ($scope.roleOptions[1].roleOption === $scope.user.roles[0]) {
-        console.log($scope.user.roles[0]);
         $scope.user.roles = $scope.roleOptions[1];
-        // document.getElementById("dropDownRoles").select = $scope.roleOptions[1];
       } else if ($scope.roleOptions[2].roleOption === $scope.user.roles[0]) {
-        console.log($scope.user.roles[0]);
         $scope.user.roles = $scope.roleOptions[2];
       } else {
         return;

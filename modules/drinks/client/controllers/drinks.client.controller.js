@@ -78,6 +78,7 @@
       }
     };
 
+    //set image when drop downs change
     function dropDownChange(){
       document.getElementById("previewImg").src= selectImage();
     }
@@ -148,6 +149,9 @@
 
       var url = 'http://swamphead.com/wp-content/uploads/2016/03/';
 
+      //this is an ugly solution but I couldn't think of a better one at the time,
+      //since Pint can be Pint or pint same with the colors.
+      
       if(vm.drink.glass.glassOption === 'Pint'){
         if(vm.drink.color.colorOption === 'Pale Yellow'){
           return url + 'Pint_Icon_PaleYellow.png';
