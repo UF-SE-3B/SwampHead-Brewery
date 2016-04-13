@@ -7,13 +7,15 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$filt
       $scope.buildPager();
     });
 
+    //list of users on page
     $scope.buildPager = function () {
       $scope.pagedItems = [];
-      $scope.itemsPerPage = 15;
+      $scope.itemsPerPage = 15; //max 15 users per page
       $scope.currentPage = 1;
       $scope.figureOutItemsToDisplay();
     };
 
+    // pagination code
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.users, {
         $: $scope.search

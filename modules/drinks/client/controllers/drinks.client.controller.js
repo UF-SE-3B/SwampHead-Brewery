@@ -20,8 +20,9 @@
     vm.save = save;
     vm.cancel = cancel;
     vm.dropDownChange = dropDownChange;
-    var isEdit = vm.drink._id ? true : false;
+    var isEdit = vm.drink._id ? true : false; // if we are dealing with a drink already in the database, determine 'isEdit'
 
+    //list of color options
     $scope.colorOptions= [
     { id: 1, colorOption: 'Pale Yellow' },
     { id: 2, colorOption: 'Yellow' },
@@ -31,6 +32,7 @@
     { id: 6, colorOption: 'Brown Black' },
     { id: 7, colorOption: 'Black' } ];
 
+    // list of glass options
     $scope.glassOptions= [
     { id: 1, glassOption: 'Pint' },
     { id: 2, glassOption: 'Snifter' },
@@ -38,6 +40,7 @@
     { id: 4, glassOption: 'Pilsner' },
     { id: 5, glassOption: 'Hef' }];
 
+    // On edit, have default color loaded
     $scope.getDefaultColor=function(){
       if($scope.colorOptions[0].colorOption === vm.drink.color){
         return ($scope.colorOptions[0]);
@@ -58,6 +61,7 @@
       }
     };
 
+    // On edit, have default glass loaded
     $scope.getDefaultGlass=function(){
       if($scope.glassOptions[0].glassOption === vm.drink.glass){
         return ($scope.glassOptions[0]);
@@ -104,16 +108,19 @@
         return false;
       }
 
-      // TODO: move create/update logic to service
+      // set new glass/color/image fields
       vm.drink.drinkImageURL = selectImage();
       vm.drink.color = vm.drink.color.colorOption;
       vm.drink.glass = vm.drink.glass.glassOption;
+
+      // determine whether update or create
       if (vm.drink._id) {
         vm.drink.$update(successCallback, errorCallback);
       } else {
         vm.drink.$save(successCallback, errorCallback);
       }
 
+      //return to listdrink state and respond with approp. toast
       function successCallback(res) {
         $state.go('drinks.list', {
           drinkId: res._id
@@ -131,10 +138,12 @@
 
     }
 
+    // cancel button on edit drink
     function cancel() {
       $state.go('drinks.list');
     }
 
+    // pull drink image from Swamphead wp-website
     function selectImage(){
 
       var url = 'http://swamphead.com/wp-content/uploads/2016/03/';
