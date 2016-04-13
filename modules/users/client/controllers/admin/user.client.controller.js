@@ -45,6 +45,10 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
       }
     };
 
+    $scope.cancel = function () {
+      $state.go('admin.users');
+    };
+
     // on click of update button
     $scope.update = function (isValid) {
       if (!isValid) { //if drink does not have all fields filled

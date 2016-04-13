@@ -1,41 +1,42 @@
 <section>
   <div class="page-header page-header-bottomless">
     <div class="row">
-      <div class="col-md-6">
+      <div class="text-center">
         <h1 ng-bind="user.username"></h1>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-8 text">
+  <div class="row center-block">
+    <div class="col-md-offset-3 col-md-6">
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>First Name</strong></div>
+        <div class="col-md-6 veneer-font">
+          <strong>First Name</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.firstName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>Last Name</strong></div>
+        <div class="col-md-6 veneer-font"><strong>Last Name</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.lastName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>Email</strong></div>
+        <div class="col-md-6 veneer-font"><strong>Email</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.email"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>Provider</strong></div>
+        <div class="col-md-6 veneer-font"><strong>Provider</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.provider"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>Created</strong></div>
+        <div class="col-md-6 veneer-font"><strong>Created</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.created"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3 veneer-font"><strong>Roles</strong></div>
+        <div class="col-md-6 veneer-font"><strong>Roles</strong></div>
         <div class="col-md-6 clarendon-font" ng-bind="user.roles.roleOption"></div>
       </div>
       <hr />
@@ -43,13 +44,17 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4 text-center">
-        <a class="btn btn-primary" ui-sref="admin.user-edit({userId: user._id})">
-          <i class="glyphicon glyphicon-edit"></i>
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" ui-sref="admin.user-edit({userId: user._id})">
+          Edit
         </a>
-        <a class="btn btn-primary" ng-click="remove();" ng-if="user._id !== authentication.user._id">
-          <i class="glyphicon glyphicon-trash"></i>
-        </a>
+        <a><button class="btn btn-danger btn-lg" ng-click="remove();" ng-if="user._id !== authentication.user._id">
+          Delete
+        </button></a>
+        <a><button class="btn btn-default btn-lg" ng-click="cancel();" ng-if="user._id !== authentication.user._id">
+          Back
+        </button></a>
     </div>
   </div>
+  <br>
 </section>

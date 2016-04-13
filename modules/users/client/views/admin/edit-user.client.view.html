@@ -31,7 +31,10 @@
         </div>
         <br>
         <div class="form-group text-center">
-          <input type="submit" value="Update" class="btn btn-primary clarendon-font">
+          <input type="submit" value="Update" class="btn btn-primary btn-lg clarendon-font">
+          <a><button class="btn btn-default btn-lg text" ng-click="cancel();" ng-if="user._id !== authentication.user._id">
+            Cancel
+          </button></a>
         </div>
         <div ng-show="error" class="text-danger">
           <strong ng-bind="error"></strong>
