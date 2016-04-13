@@ -60,8 +60,7 @@ var UserSchema = new Schema({
     trim: true
   },
   password: {
-    type: String,
-    default: ''
+    type: String
   },
   salt: {
     type: String
