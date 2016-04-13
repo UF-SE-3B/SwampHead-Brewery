@@ -20,6 +20,7 @@
         </tr>
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true}" ng-if="$index % 3 == 0">
           <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
+          <!-- include logic to change the beer color if the current beer is a guest beer -->
             <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
               <div>{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>

@@ -68,6 +68,7 @@ a:hover .header-profile-image {
 }
 /**** End Link CSS ****/
 
+/*create a larger button size intended for the home page to reach the menu page*/
 .btn-xl {
         font-size: 22px;
         padding: 10px 16px;
