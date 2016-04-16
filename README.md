@@ -19,4 +19,5 @@ This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bo
 	click settings and change the config variable (reveal config variable button)
 	paste new link
 
-
+# Screenshots
+![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
