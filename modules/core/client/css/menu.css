@@ -74,6 +74,12 @@ img.bird {
   font-family: 'veneer', sans-serif;
   font-weight: normal !important;
 }
+
+#bigger-font-size {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
 .clarendon-font {
 
   font-family: 'clarendon', sans-serif;
