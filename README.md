@@ -11,7 +11,8 @@ This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bo
 3. Open "localhost:3000" in your browser of choice.
 4. Refresh the page if necessary.
 
-How to update database and server connections:
+#How to update database and server connections:
+
 1. To change the mongo db uri for development, go to config/env/development.js and change the link
 2. To change the mongo db uri for deployment, go to heroku.
 	click on the swamp-head-menu app
