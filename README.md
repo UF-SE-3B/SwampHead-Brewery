@@ -21,3 +21,7 @@ This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bo
 
 # Screenshots
 ![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
+![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
+![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
+![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
+![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
