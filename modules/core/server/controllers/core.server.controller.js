@@ -10,6 +10,15 @@ exports.renderIndex = function (req, res) {
 };
 
 /**
+ * Render the menu page
+ */
+exports.renderMenu = function (req, res) {
+  res.render('modules/core/server/views/menu', {
+    user: req.user || null
+  });
+};
+
+/**
  * Render the server error page
  */
 exports.renderServerError = function (req, res) {

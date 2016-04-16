@@ -23,9 +23,8 @@ var DrinkSchema = new Schema({
     default: ''
   },
   drinkABV: {
-    type: String,
-    trim: true,
-    default: ''
+    type: Number,
+    default: 0
   },
   color: {
     type: String,
@@ -45,10 +44,17 @@ var DrinkSchema = new Schema({
     trim: true,
     default: 'Swamp Head Brewery'
   },
-  price: {
-    type: String,
-    trim: true,
-    default: ''
+  price12: {
+    type: Number,
+  },
+  price16: {
+    type: Number,
+  },
+  price32: {
+    type: Number,
+  },
+  price64: {
+    type: Number,
   },
   updated: {
     type: Date
@@ -58,6 +64,18 @@ var DrinkSchema = new Schema({
     default: Date.now
   },
   onMenu: {
+    type: Boolean,
+    default: false
+  },
+  menuNumber: {
+    type: Number,
+    default: 0
+  },
+  menuIndex: {
+    type: Number,
+    default: 0
+  },
+  tastingRoomOnly: {
     type: Boolean,
     default: false
   }

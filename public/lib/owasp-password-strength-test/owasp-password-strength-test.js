@@ -1,6 +1,7 @@
 /* globals define */
+
 (function (root, factory) {
-  
+
   if (typeof define === 'function' && define.amd) {
     define([], factory);
   } else if (typeof exports === 'object') {
@@ -176,3 +177,5 @@
     return owasp;
   }
 ));
+
+//Erase all password requirements

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -33,14 +33,17 @@
 
   <!-- Application CSS Files -->
   {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+
+  <!-- Toastr Css -->
+  <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
+
 </head>
 
 <body class="ng-cloak">
   <header ng-include="'/modules/core/client/views/header.client.view.html'"></header>
   <section class="content">
-    <section class="container">
       {% block content %}{% endblock %}
-    </section>
   </section>
 
   <!--Embedding The User Object-->
@@ -53,7 +56,13 @@
 
   <!--Application JavaScript Files-->
   {% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+  
+  <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jquery-ui/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="lib/angular-dragdrop/src/angular-dragdrop.min.js"></script>
 
+  <!-- Load the toastr script files -->
+  <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
   {% if livereload %}
   <!--Livereload script rendered -->
   <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>

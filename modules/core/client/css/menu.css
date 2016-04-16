@@ -1,5 +1,18 @@
+.footer{
+  position: fixed;
+  bottom: 1em;
+  width: 100%;
+  text-align: center;
+}
+
 body {
-  background-color: #262421;
+  background-color: #1B1B1A;
+}
+
+h3 {
+  color: #f3f3ed;
+  font-family: 'clarendon', sans-serif;
+
 }
 
 h1, h2 {
@@ -8,14 +21,23 @@ h1, h2 {
   font-weight: normal !important;
 }
 
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
 h1 {
   font-size: 8em;
   line-height: .8em;
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 5em;
   line-height: .9em;
+  margin-bottom: 7px;
+  margin-top: 0;
 }
 
 /*start styling specifically for other pages*/
@@ -36,16 +58,15 @@ label, b, strong, body {
 
 /*end styling specifically for other pages*/
 
-.menu-img {
-  width: 1em;
-  height: 2em;
+.beer-img {
+  width: 1.0em;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
 
-.guest-beer {
-  color: #a68f49;
+img.bird {
+  width: 2.2em;
 }
 
 .veneer-font {
@@ -53,11 +74,21 @@ label, b, strong, body {
   font-family: 'veneer', sans-serif;
   font-weight: normal !important;
 }
-
 .clarendon-font {
-  color: #f3f3ed;
+
   font-family: 'clarendon', sans-serif;
   font-weight: normal !important;
+}
+
+.clarendon-font > h2 {
+
+  font-family: 'clarendon', sans-serif;
+  font-weight: normal !important;
+  font-size: 2em;
+}
+
+.guest-beer {
+  color: #a68f49;
 }
 
 table, th , td {
@@ -73,6 +104,25 @@ table, th , td {
 .table-borderless-top tbody tr td, .table-borderless-top tbody tr th, .table-borderless-top thead tr th {
     border-top: none;
     border-bottom: 1px solid white;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border-top: none;
+    border-bottom: none;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color:#262421;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+tr.found{
+    background-color:#262421;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+tr.found{
+    background-color:#19140E;
 }
 
 .page-header-bottomless {

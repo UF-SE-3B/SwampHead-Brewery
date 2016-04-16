@@ -18,29 +18,37 @@
 
     <div style="font-size:1.1em;" class="row">
       <div class="col-md-12">
-        <h2>Now Serving</h2>
-        <table class="table table-striped table-hover table-borderless-top">
-          <tr class="clarendon-font">
+        <h2>
+          Now Serving
+          <span class="alignright" style="font-size: .6em"> Drinks on Tap: {{(vm.drinks |filter:{onMenu:true}).length}}</span>
+        </h2>
+        <table class="table table-striped table-hover table-borderless">
+          <tr class="clarendon-font table" style="border-bottom: 1px solid;">
+            <th></th>
             <th>Name</th>
             <th>Style</th>
             <th>ABV</th>
-            <th>Price</th>
-            <th>Glass</th>
-            <th>On Menu</th>
+            <th>Prices</th>
+            <th>On Menu?</th>
+            <th>Tasting Room Only?</th>
             <th>Edit</th>
           </tr>
           <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true} | filter:searchText | orderBy:'drinkName'">
-            <td class="veneer-font">{{drink.drinkName}}</td>
-            <td class="clarendon-font">{{drink.drinkStyle}}</td>
-            <td class="clarendon-font">{{drink.drinkABV}}</td>
-            <td class="clarendon-font">{{drink.price}}</td>
-            <td class="clarendon-font">{{drink.glass}}</td>
+            <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
+            <!-- include logic to change the beer color if the current beer is a guest beer -->
+            <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkName}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkStyle}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.price12 ? '$' + drink.price12 : '---'}} {{drink.price16 ? '$' + drink.price16 : '---'}} {{drink.price32 ? '$' + drink.price32 : '---'}} {{drink.price64 ? '$' + drink.price64 : '---'}}</td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOffMenu(drink)" class="center-checkbox" >
             </td>
             <td>
-              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
-            </a>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
+            </td>
+            <td>
+              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></a>
+            </td>
           </tr>
         </table>
       </div>
@@ -49,34 +57,38 @@
     <div style="font-size:1.1em;" class="row">
       <div class="col-md-12">
         <h2>Currently Unavailable</h2>
-        <table class="table table-striped table-hover table-borderless-top">
-          <tr class="clarendon-font">
+        <table class="table table-striped table-hover table-borderless">
+          <tr class="clarendon-font" style="border-bottom: 1px solid;">
+            <th></th>
             <th>Name</th>
             <th>Style</th>
             <th>ABV</th>
-            <th>Price</th>
-            <th>Glass</th>
-            <th>On Menu</th>
+            <th>Prices</th>
+            <th>On Menu?</th>
+            <th>Tasting Room Only?</th>
             <th>Edit</th>
           </tr>
-          <tr class="veneer-font" ng-repeat="drink in vm.drinks | filter:{onMenu:false} | filter:searchText | orderBy:'drinkName'">
-            <td class="veneer-font">{{drink.drinkName}}</td>
-            <td class="clarendon-font">{{drink.drinkStyle}}</td>
-            <td class="clarendon-font">{{drink.drinkABV}}</td>
-            <td class="clarendon-font">{{drink.price}}</td>
-            <td class="clarendon-font">{{drink.glass}}</td>
+          <tr ng-repeat="drink in vm.drinks | filter:{onMenu:false} | filter:searchText | orderBy:'drinkName'">
+            <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
+            <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkName}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkStyle}}</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
+            <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.price12 ? '$' + drink.price12 : '---'}} {{drink.price16 ? '$' + drink.price16 : '---'}} {{drink.price32 ? '$' + drink.price32 : '---'}} {{drink.price64 ? '$' + drink.price64 : '---'}}</td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink)" class="center-checkbox"></input>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOnMenu(drink)" class="center-checkbox">
             </td>
             <td>
-              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></td>
-            </a>
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
+            </td>
+            <td>
+              <a class="btn-sm btn btn-primary glyphicon glyphicon-edit" ui-sref="drinks.edit({ drinkId: drink._id })"></a>
+          </td>
           </tr>
         </table>
       </div>
     </div>
-    </br>
-    <div class="alert text-center gray-text btn-primary">
-      <a ui-sref="drinks.create">Create Drink</a>
+    <div>
+      <a ui-sref="drinks.create"><button class="btn btn-primary btn-lg btn-block">Create Drink</button></a>
     </div>
+  </div>
 </section>
