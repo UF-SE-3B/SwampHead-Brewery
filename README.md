@@ -24,6 +24,7 @@ This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bo
 2. Bartenders can log in and toggle currently available/unavailable drinks and reorganize their menu location via drag-n-drop.
 3. Managers can add, edit and delete drinks in the database, along with the above.
 4. Admins can edit and delete users in the system, along with the above.
+
 ![Alt text](/dep-screenshots/landing-pg.jpg?raw=true "Landing Page")
 ![Alt text](/dep-screenshots/sign-in.jpg?raw=true "Sign In")
 ![Alt text](/dep-screenshots/list-drinks-pg.jpg?raw=true "List Drinks 1")
