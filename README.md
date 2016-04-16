@@ -2,7 +2,7 @@
 
 http://swamp-head-menu.herokuapp.com
 
-This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bootstrap and the base MEAN.js application.
+This UF project uses ng-animate, angular-toastr, ng-dragdrop in addition with Bootstrap and the base MEAN.js application.
 
 #How to run the project locally:
 
