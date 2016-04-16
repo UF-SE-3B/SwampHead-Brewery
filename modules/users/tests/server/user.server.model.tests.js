@@ -5,6 +5,7 @@
  */
 var should = require('should'),
   mongoose = require('mongoose'),
+  Drink = mongoose.model('Drink'),
   User = mongoose.model('User');
 
 /**
@@ -41,6 +42,9 @@ describe('User Model Unit Tests:', function () {
   });
 
   describe('Method Save', function () {
+
+    this.timeout(10000);
+
     it('should begin with no users', function (done) {
       User.find({}, function (err, users) {
         users.should.have.length(0);
