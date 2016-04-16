@@ -20,8 +20,11 @@ This UF project used ng-animate, angular-toastr, ng-dragdrop in addition with Bo
 	paste new link
 
 # Screenshots
+![Alt text](/dep-screenshots/landing-pg.jpg?raw=true "Landing Page")
+![Alt text](/dep-screenshots/sign-in.jpg?raw=true "Sign In")
+![Alt text](/dep-screenshots/list-drinks-pg.jpg?raw=true "List Drinks 1")
+![Alt text](/dep-screenshots/list-drinks-pg2.jpg?raw=true "List Drinks 2")
 ![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
-![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
-![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
-![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
-![Alt text](/dep-screenshots/edit-drinks-pg.jpg?raw=true "Edit Drinks")
+![Alt text](/dep-screenshots/list-users-pg.jpg?raw=true "List Users")
+![Alt text](/dep-screenshots/edit-users-pg.jpg?raw=true "Edit Users")
+![Alt text](/dep-screenshots/menu-pg.jpg?raw=true "Menu")
