@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function () {
   // Init module configuration options
   var applicationModuleName = 'mean';
-  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload'];
+  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload', 'toastr', 'ngDragDrop'];
 
   // Add a new vertical module
   var registerModule = function (moduleName, dependencies) {
@@ -69,7 +69,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).run(["$rootScope"
 
   // Store previous state
   function storePreviousState(state, params) {
-    // only store this state if it shouldn't be ignored
+    // only store this state if it shouldn't be ignored 
     if (!state.data || !state.data.ignoreState) {
       $state.previous = {
         state: state,
@@ -252,13 +252,68 @@ angular.module('core').controller('MenuController', ['$scope', 'Authentication',
     var drinks = DrinksService.query();
     vm.drinks = drinks;
 
-    setInterval(function() {
+    $scope.reindexDrink = function(drink, index) {
+      if(drink.menuIndex !== index) {
+        drink.menuIndex = index;
+        drink.$update();
+      }
+    };
+
+    $scope.startDrinkDrag = function(event, ui, title) {
+      $scope.draggedIndex = this.$index;
+      $scope.draggedDrink = this.drink;
+    };
+
+    function updateDrinks() {
       var drinks = DrinksService.query();
       drinks.$promise.then(
         function(result) {
           vm.drinks = result;
         });
-    }, 5000);
+    }
+
+    function successCallback(res) {
+      updateDrinks();
+    }
+
+    function errorCallback(res) {
+      console.log("error callback");
+    }
+
+    $scope.dropOnDrink = function(event, ui) {
+      $scope.draggedDrink.menuIndex = this.$index;
+      this.drink.menuIndex = $scope.draggedIndex;
+      if($scope.draggedDrink.menuNumber === this.drink.menuNumber){
+        $scope.draggedDrink.$update(successCallback, errorCallback);
+        this.drink.$update(successCallback, errorCallback);
+      }
+    };
+
+    $scope.dropOnMenu0 = function(event, ui) {
+      if($scope.draggedDrink.menuNumber !== 0) {
+        $scope.draggedDrink.menuNumber = 0;
+
+        $scope.draggedDrink.$update(successCallback, errorCallback);
+      }
+    };
+
+    $scope.dropOnMenu1 = function(event, ui) {
+      if($scope.draggedDrink.menuNumber !== 1) {
+        $scope.draggedDrink.menuNumber = 1;
+
+        $scope.draggedDrink.$update(successCallback, errorCallback);
+      }
+    };
+
+    $scope.dropOnMenu2 = function(event, ui) {
+      if($scope.draggedDrink.menuNumber !== 2) {
+        $scope.draggedDrink.menuNumber = 2;
+
+        $scope.draggedDrink.$update(successCallback, errorCallback);
+      }
+    };
+
+    setInterval(updateDrinks(), 5000);
 
     $scope.topbarActive = true;
   }
@@ -592,21 +647,21 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       title: 'Drinks',
       state: 'drinks',
       type: 'dropdown',
-      roles: ['admin', 'manager', 'bartender']
+      roles: ['admin', 'manager', 'bartender'] //all roles can access drinks dropdown
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'drinks', {
       title: 'List Drinks',
       state: 'drinks.list',
-      roles: ['admin', 'manager', 'bartender']
+      roles: ['admin', 'manager', 'bartender'] //all roles can use drink view
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'drinks', {
       title: 'Create Drink',
       state: 'drinks.create',
-      roles: ['admin', 'manager']
+      roles: ['admin', 'manager'] //only admin and manager can use create drink
     });
   }
 })();
@@ -633,7 +688,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
         controller: 'DrinksListController',
         controllerAs: 'vm',
         data: {
-          roles: ['admin', 'manager', 'bartender'],
+          roles: ['admin', 'manager', 'bartender'], //all roles can view drink list
           pageTitle: 'Drinks List'
         }
       })
@@ -646,7 +701,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
           drinkResolve: newDrink
         },
         data: {
-          roles: ['admin', 'manager'],
+          roles: ['admin', 'manager'], //only admin and manager can create drinks
           pageTitle : 'Drinks Create'
         }
       })
@@ -659,7 +714,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
           drinkResolve: getDrink
         },
         data: {
-          roles: ['admin', 'manager'],
+          roles: ['admin', 'manager'], //only admin and manager can edit drinks
           pageTitle: 'Edit Drink {{ drink.drinkName }}'
         }
       })
@@ -672,7 +727,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
           drinkResolve: getDrink
         },
         data:{
-          roles: ['admin', 'manager', 'bartender'],
+          roles: ['admin', 'manager', 'bartender'], //all roles can view drinks
           pageTitle: 'Drink {{ drink.drinkName }}'
         }
       });
@@ -700,9 +755,9 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
     .module('drinks')
     .controller('DrinksController', DrinksController);
 
-  DrinksController.$inject = ['$scope', '$state', 'drinkResolve', 'Authentication'];
+  DrinksController.$inject = ['$scope', '$state', 'drinkResolve', 'Authentication', 'toastr'];
 
-  function DrinksController($scope, $state, drink, Authentication) {
+  function DrinksController($scope, $state, drink, Authentication, toastr) {
     var vm = this;
 
     $scope.authentication = Authentication;
@@ -713,40 +768,82 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.cancel = cancel;
+    vm.dropDownChange = dropDownChange;
+    var isEdit = vm.drink._id ? true : false; // if we are dealing with a drink already in the database, determine 'isEdit'
 
-    // drinkColor.color = vm.drink.color;
-    // Remove existing Drink
-    function remove() {
-      if (confirm('Are you sure you want to delete?')) {
-        vm.drink.$remove($state.go('drinks.list'));
+    //list of color options
+    $scope.colorOptions= [
+    { id: 1, colorOption: 'Pale Yellow' },
+    { id: 2, colorOption: 'Yellow' },
+    { id: 3, colorOption: 'Orange' },
+    { id: 4, colorOption: 'Red' },
+    { id: 5, colorOption: 'Dark Red' },
+    { id: 6, colorOption: 'Brown Black' },
+    { id: 7, colorOption: 'Black' } ];
+
+    // list of glass options
+    $scope.glassOptions= [
+    { id: 1, glassOption: 'Pint' },
+    { id: 2, glassOption: 'Snifter' },
+    { id: 3, glassOption: 'Wit' },
+    { id: 4, glassOption: 'Pilsner' },
+    { id: 5, glassOption: 'Hef' }];
+
+    // On edit, have default color loaded
+    $scope.getDefaultColor=function(){
+      if($scope.colorOptions[0].colorOption === vm.drink.color){
+        return ($scope.colorOptions[0]);
+      } else if ($scope.colorOptions[1].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[1]);
+      } else if ($scope.colorOptions[2].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[2]);
+      } else if ($scope.colorOptions[3].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[3]);
+      } else if ($scope.colorOptions[4].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[4]);
+      } else if ($scope.colorOptions[5].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[5]);
+      } else if ($scope.colorOptions[6].colorOption === vm.drink.color) {
+        return ($scope.colorOptions[6]);
+      } else {
+        return;
       }
+    };
+
+    // On edit, have default glass loaded
+    $scope.getDefaultGlass=function(){
+      if($scope.glassOptions[0].glassOption === vm.drink.glass){
+        return ($scope.glassOptions[0]);
+      } else if ($scope.glassOptions[1].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[1]);
+      } else if ($scope.glassOptions[2].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[2]);
+      } else if ($scope.glassOptions[3].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[3]);
+      } else if ($scope.glassOptions[4].glassOption === vm.drink.glass) {
+        return ($scope.glassOptions[4]);
+      } else {
+        return;
+      }
+    };
+
+    //set image when drop downs change
+    function dropDownChange(){
+      document.getElementById("previewImg").src= selectImage();
     }
 
-    // Save Drink
-    function save(isValid) {
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
-        return false;
-      }
-
-      // TODO: move create/update logic to service
-      var colorSelecter = document.getElementById('colorSelecter');
-      var colorSelecterText = colorSelecter.options[colorSelecter.selectedIndex].innerHTML;
-      var glassSelecter = document.getElementById('glassSelecter');
-      var glassSelecterText = glassSelecter.options[glassSelecter.selectedIndex].innerHTML;
-      vm.drink.color = colorSelecterText;
-      vm.drink.glass = glassSelecterText;
-      vm.drink.drinkImageURL = selectImage();
-      if (vm.drink._id) {
-        vm.drink.$update(successCallback, errorCallback);
-      } else {
-        vm.drink.$save(successCallback, errorCallback);
+    // delete drink from database
+    function remove() {
+      if (confirm('Are you sure you want to delete?')) {
+        vm.drink.$remove(successCallback, errorCallback);
       }
 
       function successCallback(res) {
         $state.go('drinks.list', {
           drinkId: res._id
         });
+        toastr.success(vm.drink.drinkName + ' was deleted!');
       }
 
       function errorCallback(res) {
@@ -754,47 +851,142 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       }
     }
 
-    $scope.colorOptions= [
-    { id: 1, colorOption: 'Gold' },
-    { id: 2, colorOption: 'Light Brown' },
-    { id: 3, colorOption: 'Brown' },
-    { id: 4, colorOption: 'Red' },
-    { id: 5, colorOption: 'Dark Brown' }];
+    // Save Drink
+    function save(isValid) {
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.drinkForm');
+        toastr.error('Drink not updated!');
+        return false;
+      }
 
-    $scope.glassOptions= [
-    { id: 1, glassOption: 'Pint' },
-    { id: 2, glassOption: 'Snifter' }];
+      // set new glass/color/image fields
+      vm.drink.drinkImageURL = selectImage();
+      vm.drink.color = vm.drink.color.colorOption;
+      vm.drink.glass = vm.drink.glass.glassOption;
 
-    function selectImage(){
-      if(document.getElementById('glassSelecter').selectedIndex === 0){
-        if(document.getElementById('colorSelecter').selectedIndex === 0){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/light_pint1.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 1){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/pale_ale_pint_2.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 2){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/oktoberfest_pint.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 3){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/red_pint.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 4){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/stout_pint1.png';
-        }
-      } else if (document.getElementById('glassSelecter').selectedIndex === 1){
-        if(document.getElementById('colorSelecter').selectedIndex === 0){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/saison_snifter2.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 1){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/pale_ale_snifter.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 2){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/amber_snifter.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 3){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/red_snifter.png';
-        } else if (document.getElementById('colorSelecter').selectedIndex === 4){
-          return 'http://swamphead.com/wp-content/uploads/2013/11/stout_snifter.png';
-        }
+      // determine whether update or create
+      if (vm.drink._id) {
+        vm.drink.$update(successCallback, errorCallback);
       } else {
-        return '';
+        vm.drink.$save(successCallback, errorCallback);
+      }
+
+      //return to listdrink state and respond with approp. toast
+      function successCallback(res) {
+        $state.go('drinks.list', {
+          drinkId: res._id
+        });
+        if(isEdit){
+          toastr.success(vm.drink.drinkName + ' was updated!');
+        } else {
+          toastr.success(vm.drink.drinkName + ' was created!');
+        }
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
       }
 
     }
+
+    // cancel button on edit drink
+    function cancel() {
+      $state.go('drinks.list');
+    }
+
+    // pull drink image from Swamphead wp-website
+    function selectImage(){
+
+      var url = 'http://swamphead.com/wp-content/uploads/2016/03/';
+
+      //this is an ugly solution but I couldn't think of a better one at the time,
+      //since Pint can be Pint or pint same with the colors.
+      
+      if(vm.drink.glass.glassOption === 'Pint'){
+        if(vm.drink.color.colorOption === 'Pale Yellow'){
+          return url + 'Pint_Icon_PaleYellow.png';
+        } else if (vm.drink.color.colorOption === 'Yellow'){
+          return url + 'pint_Icon_Yellow.png';
+        } else if (vm.drink.color.colorOption === 'Orange'){
+          return url + 'pint_Icon_Orange.png';
+        } else if (vm.drink.color.colorOption === 'Red'){
+          return url + 'pint_Icon_Red.png';
+        } else if (vm.drink.color.colorOption === 'Dark Red'){
+          return url + 'pint_Icon_darkRed.png';
+        } else if (vm.drink.color.colorOption === 'Brown Black'){
+          return url + 'pint_Icon_brownBlack.png';
+        } else if (vm.drink.color.colorOption === 'Black'){
+          return url + 'pint_Icon_Black.png';
+        }
+      } else if (vm.drink.glass.glassOption === 'Snifter'){
+        if(vm.drink.color.colorOption === 'Pale Yellow'){
+          return url + 'sniffer_Icon_paleYellow.png';
+        } else if (vm.drink.color.colorOption === 'Yellow'){
+          return url + 'sniffer_Icon_Yellow.png';
+        } else if (vm.drink.color.colorOption === 'Orange'){
+          return url + 'sniffer_Icon_Orange.png';
+        } else if (vm.drink.color.colorOption === 'Red'){
+          return url + 'sniffer_Icon_Red.png';
+        } else if (vm.drink.color.colorOption === 'Dark Red'){
+          return url + 'sniffer_Icon_DarkRed.png';
+        } else if (vm.drink.color.colorOption === 'Brown Black'){
+          return url + 'sniffer_Icon_BrownBlack.png';
+        } else if (vm.drink.color.colorOption === 'Black'){
+          return url + 'sniffer_Icon_Black.png';
+        }
+      } else if (vm.drink.glass.glassOption === 'Wit'){
+        if(vm.drink.color.colorOption === 'Pale Yellow'){
+          return url + 'wit_Icon_paleYellow.png';
+        } else if (vm.drink.color.colorOption === 'Yellow'){
+          return url + 'wit_Icon_Yellow.png';
+        } else if (vm.drink.color.colorOption === 'Orange'){
+          return url + 'wit_Icon_orange.png';
+        } else if (vm.drink.color.colorOption === 'Red'){
+          return url + 'wit_Icon_red.png';
+        } else if (vm.drink.color.colorOption === 'Dark Red'){
+          return url + 'wit_Icon_darkRed.png';
+        } else if (vm.drink.color.colorOption === 'Brown Black'){
+          return url + 'wit_Icon_brownBlack.png';
+        } else if (vm.drink.color.colorOption === 'Black'){
+          return url + 'wit_Icon_Black.png';
+        }
+      } else if (vm.drink.glass.glassOption === 'Pilsner'){
+        if(vm.drink.color.colorOption === 'Pale Yellow'){
+          return url + 'pilsner_icon_paleYellow.png';
+        } else if (vm.drink.color.colorOption === 'Yellow'){
+          return url + 'pilsner_icon_Yellow.png';
+        } else if (vm.drink.color.colorOption === 'Orange'){
+          return url + 'pilsner_icon_orange.png';
+        } else if (vm.drink.color.colorOption === 'Red'){
+          return url + 'pilsner_icon_red.png';
+        } else if (vm.drink.color.colorOption === 'Dark Red'){
+          return url + 'pilsner_icon_darkRed.png';
+        } else if (vm.drink.color.colorOption === 'Brown Black'){
+          return url + 'pilsner_icon_brownBlack.png';
+        } else if (vm.drink.color.colorOption === 'Black'){
+          return url + 'pilsner_icon_Black.png';
+        }
+      } else if (vm.drink.glass.glassOption === 'Hef'){
+        if(vm.drink.color.colorOption === 'Pale Yellow'){
+          return url + 'hef_Icon_paleYellow.png';
+        } else if (vm.drink.color.colorOption === 'Yellow'){
+          return url + 'hef_Icon_yellow.png';
+        } else if (vm.drink.color.colorOption === 'Orange'){
+          return url + 'hef_Icon_orange.png';
+        } else if (vm.drink.color.colorOption === 'Red'){
+          return url + 'hef_Icon_red.png';
+        } else if (vm.drink.color.colorOption === 'Dark Red'){
+          return url + 'hef_Icon_darkRed.png';
+        } else if (vm.drink.color.colorOption === 'Brown Black'){
+          return url + 'hef_icon_brownBlack.png';
+        } else if (vm.drink.color.colorOption === 'Black'){
+          return url + 'hef_Icon_Black.png';
+        }
+      } else {
+        return 'http://swamphead.com/wp-content/uploads/2016/03/circleLogo_White-01.png';
+      }
+    }
+
   }
 })();
 
@@ -802,7 +994,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
   'use strict';
 
   angular
-    .module('drinks', ['ngAnimate', 'toastr'])
+    .module('drinks')
     .controller('DrinksListController', DrinksListController);
 
   DrinksListController.$inject = ['DrinksService', '$state' , '$scope', 'toastr'];
@@ -810,10 +1002,12 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
   function DrinksListController(DrinksService, $state, $scope, toastr) {
     var vm = this;
     vm.AddToMenu = AddToMenu;
+    vm.mvOnMenu = mvOnMenu;
     vm.mvOffMenu = mvOffMenu;
 
     vm.drinks = DrinksService.query();
 
+    // switch to ontap/offtap menu
     function AddToMenu(drink) {
       drink.$update(successCallback, errorCallback);
 
@@ -828,72 +1022,21 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       }
     }
 
-    function mvOffMenu($scope, toastr) {
-      toastr.success('Hello world!', 'Toastr fun!');
+    //Menu drink toggle notification via toastr
+    function mvOnMenu(drink) {
+      toastr.success(
+        drink.drinkName + ' was added to tap!'
+      );
     }
+    function mvOffMenu(drink) {
+      toastr.success(
+        drink.drinkName + ' was removed from tap!'
+      );
+    }
+
   }
 })();
 
-(function () {
-  'use strict';
-
-  angular
-      .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-      .controller('AppCtrl', ["$scope", "$mdToast", function ($scope, $mdToast) {
-        var last = {
-          bottom: false ,
-          top: true ,
-          left: false ,
-          right: true
-        };
-        $scope.toastPosition = angular.extend({}, last);
-        $scope.getToastPosition = function () {
-          sanitizePosition();
-          return Object.keys($scope.toastPosition)
-            .filter(function (pos) {
-              return $scope.toastPosition[pos];
-            })
-            .join(' ');
-        };
-
-        function sanitizePosition() {
-          var current = $scope.toastPosition;
-          if (current.bottom && last.top) current.top = false;
-          if (current.top && last.bottom) current.bottom = false;
-          if (current.right && last.left) current.left = false;
-          if (current.left && last.right) current.right = false;
-          last = angular.extend({}, current);
-        }
-        $scope.showSimpleToast = function () {
-          var pinTo = $scope.getToastPosition();
-          $mdToast.show(
-            $mdToast.simple()
-              .textContent('Simple Toast!')
-              .position(pinTo)
-              .hideDelay(3000)
-          );
-        };
-        $scope.showActionToast = function () {
-          var pinTo = $scope.getToastPosition();
-          var toast = $mdToast.simple()
-            .textContent('Marked as read')
-            .action('UNDO')
-            .highlightAction(true)
-            .highlightClass('md-accent') // Accent is used by default, this just demonstrates the usage.
-            .position(pinTo);
-          $mdToast.show(toast).then(function (response) {
-            if (response === 'ok') {
-              alert('You clicked the \'UNDO\' action.');
-            }
-          });
-        };
-      }])
-      .controller('ToastCtrl', ["$scope", "$mdToast", function ($scope, $mdToast) {
-        $scope.closeToast = function () {
-          $mdToast.hide();
-        };
-      }]);
-})();
 (function () {
   'use strict';
 
@@ -920,6 +1063,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
 angular.module('users.admin').run(['Menus',
   function (Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
+      //Name of dropdown menu in admin view
       title: 'Manage Users',
       state: 'admin.users'
     });
@@ -1007,7 +1151,7 @@ angular.module('users').config(['$stateProvider',
         url: '/settings',
         templateUrl: 'modules/users/client/views/settings/settings.client.view.html',
         data: {
-          roles: ['bartender', 'admin', 'manager']
+          roles: ['bartender', 'admin', 'manager'] //correct roles added
         }
       })
       .state('settings.profile', {
@@ -1077,13 +1221,15 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$filt
       $scope.buildPager();
     });
 
+    //list of users on page
     $scope.buildPager = function () {
       $scope.pagedItems = [];
-      $scope.itemsPerPage = 15;
+      $scope.itemsPerPage = 15; //max 15 users per page
       $scope.currentPage = 1;
       $scope.figureOutItemsToDisplay();
     };
 
+    // pagination code
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.users, {
         $: $scope.search
@@ -1102,11 +1248,36 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$filt
 
 'use strict';
 
-angular.module('users.admin').controller('UserController', ['$scope', '$state', 'Authentication', 'userResolve',
-  function ($scope, $state, Authentication, userResolve) {
+angular.module('users.admin').controller('UserController', ['$scope', '$state', 'Authentication', 'userResolve', 'toastr' ,
+  function ($scope, $state, Authentication, userResolve, toastr) {
     $scope.authentication = Authentication;
     $scope.user = userResolve;
 
+    var vm = this;
+    vm.person = userResolve;
+
+    //drop down options for roles
+    $scope.roleOptions= [
+    { id: 1, roleOption: 'bartender' },
+    { id: 2, roleOption: 'manager' },
+    { id: 3, roleOption: 'admin' }];
+
+    //set drop down once we have the roles info
+    vm.person.$promise.then(function(result) {
+      if($scope.roleOptions[0].roleOption === $scope.user.roles[0]){
+        $scope.user.roles = $scope.roleOptions[0];
+      } else if ($scope.roleOptions[1].roleOption === $scope.user.roles[0]) {
+        $scope.user.roles = $scope.roleOptions[1];
+      } else if ($scope.roleOptions[2].roleOption === $scope.user.roles[0]) {
+        $scope.user.roles = $scope.roleOptions[2];
+      } else {
+        return;
+      }
+    }, function(err) {
+      console.log(err); // Error: "It broke"
+    });
+
+    // delete user from database
     $scope.remove = function (user) {
       if (confirm('Are you sure you want to delete this user?')) {
         if (user) {
@@ -1116,26 +1287,36 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         } else {
           $scope.user.$remove(function () {
             $state.go('admin.users');
+            toastr.success($scope.user.username + ' was deleted!');
           });
         }
       }
     };
 
+    $scope.cancel = function () {
+      $state.go('admin.users');
+    };
+
+    // on click of update button
     $scope.update = function (isValid) {
-      if (!isValid) {
+      if (!isValid) { //if drink does not have all fields filled
         $scope.$broadcast('show-errors-check-validity', 'userForm');
+        toastr.error('User not updated!');
 
         return false;
       }
-
+      $scope.user.roles = $scope.user.roles.roleOption;
       var user = $scope.user;
 
+      //pass 'isValid', go back user list on success
       user.$update(function () {
         $state.go('admin.user', {
           userId: user._id
         });
+        toastr.success(user.username + ' was updated!');
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
+        toastr.warning($scope.error);
       });
     };
   }
@@ -1524,7 +1705,7 @@ angular.module('users').factory('PasswordValidator', ['$window',
         return result;
       },
       getPopoverMsg: function () {
-        var popoverMsg = 'Please enter a passphrase or password with greater than 10 characters, numbers, lowercase, upppercase, and special characters.';
+        var popoverMsg = 'Please enter a password.';
         return popoverMsg;
       }
     };

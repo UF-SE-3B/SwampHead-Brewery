@@ -6,15 +6,21 @@
     var scope,
       HeaderController,
       $state,
-      Authentication;
+      Authentication,
+      Menus,
+      $location;
 
     // Load the main application module
     beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _Authentication_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _Authentication_, _Menus_, _$location_) {
       scope = $rootScope.$new();
       $state = _$state_;
       Authentication = _Authentication_;
+      Menus = _Menus_;
+      $location = _$location_;
+
+//$scope, $state, Authentication, Menus, $location
 
       HeaderController = $controller('HeaderController', {
         $scope: scope
