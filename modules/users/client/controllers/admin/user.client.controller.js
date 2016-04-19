@@ -12,7 +12,8 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.roleOptions= [
     { id: 1, roleOption: 'bartender' },
     { id: 2, roleOption: 'manager' },
-    { id: 3, roleOption: 'admin' }];
+    { id: 3, roleOption: 'admin' },
+    { id: 4, roleOption: 'user' }];
 
     //set drop down once we have the roles info
     vm.person.$promise.then(function(result) {
@@ -22,6 +23,8 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
         $scope.user.roles = $scope.roleOptions[1];
       } else if ($scope.roleOptions[2].roleOption === $scope.user.roles[0]) {
         $scope.user.roles = $scope.roleOptions[2];
+      } else if ($scope.roleOptions[3].roleOption === $scope.user.roles[0]) {
+        $scope.user.roles = $scope.roleOptions[3];
       } else {
         return;
       }
