@@ -70,7 +70,7 @@ angular.module('core').controller('MenuController', ['$scope', 'Authentication',
       }
     };
 
-    setInterval(updateDrinks(), 5000);
+    setInterval(updateDrinks, 5000);
 
     $scope.topbarActive = true;
   }

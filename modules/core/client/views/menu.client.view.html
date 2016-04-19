@@ -22,7 +22,7 @@
           <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
           <!-- include logic to change the beer color if the current beer is a guest beer -->
             <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.drinkName}}</div>
+              <div id="bigger-font-size">{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
@@ -56,7 +56,7 @@
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true} | filter:{menuNumber:1} | orderBy:['menuIndex', '!tastingRoomOnly', 'drinkName']" ng-init="reindexDrink(drink, $index)" ng-model="vm.drinks" data-drag="true" data-drop="true" jqyoui-droppable="{index: {{$index}}, onDrop:'dropOnDrink'}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: {{$index}}, animate: true, onStart:'startDrinkDrag'}">
           <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
             <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.drinkName}}</div>
+              <div id="bigger-font-size">{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
@@ -93,7 +93,7 @@
         <tr ng-repeat="drink in vm.drinks | filter:{onMenu:true} | filter:{menuNumber:2} | orderBy:['menuIndex', '!tastingRoomOnly', 'drinkName']" ng-init="reindexDrink(drink, $index)" ng-model="vm.drinks" data-drag="true" data-drop="true" jqyoui-droppable="{index: {{$index}}, onDrop:'dropOnDrink'}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: {{$index}} , onStart:'startDrinkDrag'}">
           <td><img class="beer-img" src="{{drink.drinkImageURL}}"></img></td>
             <td class="veneer-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">
-              <div>{{drink.drinkName}}</div>
+              <div id="bigger-font-size">{{drink.drinkName}}</div>
               <div class="clarendon-font">{{drink.drinkStyle}}</div>
             </td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
