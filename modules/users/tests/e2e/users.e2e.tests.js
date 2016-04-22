@@ -91,10 +91,7 @@ describe('Users E2E Tests:', function () {
       expect(element.all(by.css('.error-text')).get(0).getText()).toBe('Email address is invalid.');
     });
 
-    /**
-     * Note: 123@123 is a valid email adress according to HTML5.
-     * However, 123@123@123 is an invalid email address.
-     */
+
     it('Should report invalid email address - "123@123@123"', function () {
       browser.get('http://localhost:3001/authentication/signup');
       // Enter First Name
