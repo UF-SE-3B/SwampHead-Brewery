@@ -886,6 +886,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       function errorCallback(res) {
         vm.error = res.data.message;
       }
+
     }
 
     // cancel button on edit drink
@@ -900,7 +901,6 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
 
       //this is an ugly solution but I couldn't think of a better one at the time,
       //since Pint can be Pint or pint same with the colors.
-
       if(vm.drink.glass.glassOption === 'Pint'){
         if(vm.drink.color.colorOption === 'Pale Yellow'){
           return url + 'Pint_Icon_PaleYellow.png';
