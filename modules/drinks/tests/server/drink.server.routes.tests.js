@@ -60,15 +60,29 @@ describe('Drink CRUD tests', function () {
       email: 'test@test.com',
       username: credentials.username,
       password: credentials.password,
-      //provider: 'local',
+      provider: 'local',
       //roles: 'admin'
     });
 
     // Save a user to the test db and create new drink
     user.save(function () {
       drink = {
-        title: 'Drink Title',
-        content: 'Drink Content'
+
+        drinkName: 'Drink',
+        drinkStyle: 'Pale Ale',
+        drinkAbV: 5,
+        color: 'yellow',
+        glass: 'pint',
+        origin: 'Swamp Head Brewery',
+        price12: 6,
+        price16: 6,
+        price32: 10,
+        price64: 14,
+        onMenu: false,
+        menuNumber: 0,
+        menuIndex: 0,
+        tastingRoomOnly: false
+
       };
 
       done();
@@ -79,7 +93,7 @@ describe('Drink CRUD tests', function () {
     user.roles = ['admin'];
 
     user.save(function (err) {
-      agent.post('/api/auth/signin')
+      agent.post('/api/auth/signin') //agent
         .send(credentials)
         .expect(200)
         .end(function (signinErr, signinRes) {
@@ -92,7 +106,7 @@ describe('Drink CRUD tests', function () {
           var userId = user.id;
 
           // Save a new drink
-          agent.post('/api/drinks')
+          agent.post('/api/drinks') //agent
             .send(drink)
             .expect(200)
             .end(function (drinkSaveErr, drinkSaveRes) {
@@ -102,7 +116,7 @@ describe('Drink CRUD tests', function () {
               }
 
               // Get a list of drinks
-              agent.get('/api/drinks')
+              agent.get('/api/drinks') //agent
                 .end(function (drinksGetErr, drinksGetRes) {
                   // Handle drink save error
                   if (drinksGetErr) {
@@ -113,7 +127,7 @@ describe('Drink CRUD tests', function () {
                   var drinks = drinksGetRes.body;
 
                   // Set assertions
-                  (drinks[0].user._id).should.equal(userId);
+                  (drinks[0].user.id).should.equal(userId);
                   (drinks[0].title).should.match('Drink');
 
                   // Call the assertion callback
@@ -156,7 +170,7 @@ describe('Drink CRUD tests', function () {
           .expect(400)
           .end(function (drinkSaveErr, drinkSaveRes) {
             // Set message assertion
-            (drinkSaveRes.body.message).should.match('Title cannot be blank');
+            (drinkSaveRes.body.message).should.match('Please fill in a drink name');
 
             // Handle drink save error
             done(drinkSaveErr);

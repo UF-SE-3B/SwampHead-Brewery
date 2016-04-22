@@ -37,7 +37,8 @@ describe('User Model Unit Tests:', function () {
       email: 'test3@test.com',
       username: 'different_username',
       password: 'Different_Password1!',
-      provider: 'local'
+      provider: 'local',
+      roles: 'admin'
     };
   });
 
@@ -94,7 +95,7 @@ describe('User Model Unit Tests:', function () {
 
       _user1.save(function (err) {
         should.not.exist(err);
-        _user1.roles = ['user', 'admin'];
+        _user1.roles = ['bartender', 'admin'];
         _user1.save(function (err) {
           should.not.exist(err);
           _user1.remove(function (err) {
