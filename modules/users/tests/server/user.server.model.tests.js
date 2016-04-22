@@ -5,6 +5,7 @@
  */
 var should = require('should'),
   mongoose = require('mongoose'),
+  Drink = mongoose.model('Drink'),
   User = mongoose.model('User');
 
 /**
@@ -36,11 +37,15 @@ describe('User Model Unit Tests:', function () {
       email: 'test3@test.com',
       username: 'different_username',
       password: 'Different_Password1!',
-      provider: 'local'
+      provider: 'local',
+      roles: 'admin'
     };
   });
 
   describe('Method Save', function () {
+
+    this.timeout(10000);
+
     it('should begin with no users', function (done) {
       User.find({}, function (err, users) {
         users.should.have.length(0);
@@ -90,7 +95,7 @@ describe('User Model Unit Tests:', function () {
 
       _user1.save(function (err) {
         should.not.exist(err);
-        _user1.roles = ['user', 'admin'];
+        _user1.roles = ['bartender', 'admin'];
         _user1.save(function (err) {
           should.not.exist(err);
           _user1.remove(function (err) {

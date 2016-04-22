@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <h2>
           Now Serving
-          <span class="alignright" style="font-size: .6em"> Drinks on Tap: {{(vm.drinks |filter:{onMenu:true}).length}}</span>
+          <span class="alignright" style="font-size: .6em"> Drinks on Tap: {{(vm.drinks |filter:{onMenu:true}).length}}</span> <!-- This is the counter on drink list to keep track of what is on tap-->
         </h2>
         <table class="table table-striped table-hover table-borderless">
           <tr class="clarendon-font table" style="border-bottom: 1px solid;">
@@ -75,7 +75,7 @@
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.drinkABV}}%</td>
             <td class="clarendon-font" ng-class="drink.origin.toLowerCase().indexOf('swamp head brewery') == -1 ? 'guest-beer' : 'home-beer'">{{drink.price12 ? '$' + drink.price12 : '---'}} {{drink.price16 ? '$' + drink.price16 : '---'}} {{drink.price32 ? '$' + drink.price32 : '---'}} {{drink.price64 ? '$' + drink.price64 : '---'}}</td>
             <td>
-              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOnMenu(drink)" class="center-checkbox">
+              <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.onMenu" ng-change="vm.AddToMenu(drink); vm.mvOnMenu(drink)" class="center-checkbox" id="checkBox">
             </td>
             <td>
               <input style="width:25px;height:25px;" type="checkbox" ng-model="drink.tastingRoomOnly" ng-change="vm.AddToMenu(drink)" class="center-checkbox">
